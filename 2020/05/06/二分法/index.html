@@ -135,7 +135,7 @@
 </span>
 </span>
     </div>
-    <div class="post-content ">
+    <div class="post-content no-indent">
         <p>首先二分法只适用于已经排序过的数组。<br>二分法的思想就是通过每次排除一半的数列，在剩余一半的数组中查找目标值并返回其所在的位置。相比于直接查找二分法的效率更高，其时间复杂度是O(log2n)。</p>
 <hr>
 <h3 id="python代码实现："><a href="#python代码实现：" class="headerlink" title="python代码实现："></a>python代码实现：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">def Binary(nums, target):</span><br><span class="line">    left &#x3D; 0</span><br><span class="line">    right &#x3D; len(nums) - 1</span><br><span class="line">    while left &lt;&#x3D; right:</span><br><span class="line">        mid &#x3D; (left + right) &#x2F;&#x2F; 2</span><br><span class="line">        if nums[mid] &#x3D;&#x3D; target:</span><br><span class="line">            return mid</span><br><span class="line">        elif nums[mid] &lt; target:</span><br><span class="line">            left &#x3D; mid + 1</span><br><span class="line">        elif nums[mid] &gt; target:</span><br><span class="line">            right &#x3D; mid - 1</span><br><span class="line">    return &quot;Target is not in the list.&quot;</span><br></pre></td></tr></table></figure>
