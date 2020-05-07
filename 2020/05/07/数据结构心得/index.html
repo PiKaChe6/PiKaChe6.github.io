@@ -11,7 +11,7 @@
 
     <title>
         
-        tags - PiKaChe&#39;s Blog
+        数据结构心得 - PiKaChe&#39;s Blog
         
     </title>
 
@@ -63,7 +63,7 @@
                     <span>HOME</span>
                 </a>
             </li>
-            <li  class=active >
+            <li >
                 <a href="/tags">
                     <i class="iconfont icon-biaoqian1"></i>
                     <span>TAGS</span>
@@ -92,6 +92,10 @@
         </ul>
     </div>
     
+        <div id="toc" class="toc-article">
+    
+</div>
+    
 </div>
 
 
@@ -115,13 +119,36 @@
     
     <div class="index-middle">
         <!-- Main Content -->
-        <div id='tag_cloud' class="tags">
-    
+        
+
+
+<div class="post-container">
+    <div class="post-title">
+        数据结构心得
+    </div>
+
+    <div class="post-meta">
+        <span class="attr">Post：<span>2020-05-07 21:01:50</span></span>
+        
+        </span>
+        <span class="attr">Visit：<span id="busuanzi_value_page_pv"></span>
+</span>
+</span>
+    </div>
+    <div class="post-content no-indent">
+        <p>之前和朋友聊天的时候发现一个问题，很多通信公司宣传的百兆光纤，最高能达到100Mb/s的下载速度。可是当我自己办了那个网之后发现下载资料文件根本达不到100Mb/s，最多能达到10兆每秒就很难得了。<br><img src="vodafone.png" alt="vodafone"><br>最后在同学的提醒下发现，商家们宣传的100Mb/s中的单位是Mb/s其中的b是小写的b，是比特(bit)的缩写。而大家平时电脑里存放的文件的最小单位是字节(Byte)，文件大小可能是KB，MB或者是GB，这里的B是大写的B！单位换算如下：<br>1Byte =8 bit<br>1KB = 2<sup>10</sup>Byte = 1024 Byte<br>1MB = 2<sup>10</sup>KB = 1024 KB<br>1GB = 2<sup>10</sup>MB = 1024 MB<br>所以我们在计算下载速度的时候应该将100/8 =12.5MB/s比较符合常理。</p>
+
+        
+        <br />
+        <div id="comment-container">
+        </div>
+        <div id="disqus_thread"></div>
+
+        <div id="lv-container">
+        </div>
+
+    </div>
 </div>
-
-<!-- 标签列表 -->
-
-
 
     </div>
 </div>
@@ -161,7 +188,7 @@
     // We expose some of the variables needed by the front end
     window.hexo_search_path = "search.json"
     window.hexo_root = "/"
-    window.isPost = false
+    window.isPost = true
 </script>
 <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
 
@@ -169,6 +196,25 @@
 
 <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
+
+    <script>
+        /**
+         *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+         *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+        */
+        if( '' || '')
+        var disqus_config = function () {
+            this.page.url = '';  // Replace PAGE_URL with your page's canonical URL variable
+            this.page.identifier = ''; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+        };
+
+        (function() { // DON'T EDIT BELOW THIS LINE
+            var d = document, s = d.createElement('script');
+            s.src = 'https://pikache.disqus.com/embed.js';
+            s.setAttribute('data-timestamp', +new Date());
+            (d.head || d.body).appendChild(s);
+        })();
+    </script>
 
 
 
