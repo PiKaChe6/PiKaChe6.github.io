@@ -93,7 +93,7 @@
     </div>
     
         <div id="toc" class="toc-article">
-    
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#用一个例子解释一维傅立叶变换"><span class="toc-text">用一个例子解释一维傅立叶变换</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#傅立叶变换在二维图像处理中的应用"><span class="toc-text">傅立叶变换在二维图像处理中的应用</span></a></li></ol>
 </div>
     
 </div>
@@ -137,10 +137,40 @@
     </div>
     <div class="post-content no-indent">
         <p><strong>傅立叶</strong>：任何连续的周期信号，可以由一组适当的正弦曲线组合而成。（Any univariate function can be rewritten as a weighted sum of sines and cosines of different frequencies.）</p>
+<hr>
+<p>一个恰当的比喻是将傅立叶变换比作一个玻璃棱镜。棱镜是可以将光分解为不同颜色的物理仪器，每个成分的颜色由波长（或频率）来决定。傅立叶变换可以看作数学上的棱镜，将函数基于频率分解为不同的成分。当我们考虑时，讨论他的光谱或频率谱。同样，傅立叶变换使我们能通过频率成分来分析一个函数。</p>
+<hr>
 <iframe height=300 width=300 src="https://upload.wikimedia.org/wikipedia/commons/7/72/Fourier_transform_time_and_frequency_domains_%28small%29.gif"></iframe>
 
 <hr>
-<p>我们一般描述一个函数都是基于时间域，如图所示表示了这个函数随时间变化的变化。<br><img src="timedomain.JPG" alt="timedomain"><br>但是其实还有一种方法也可以描述这个函数，就是频率域。就比如上图中的函数可以写成<br>f(x) = 3sin(0.8x) + 7sin(0.3x) + 2sin(0.2x)<br>的形式。就是相当于给了频率为0.8, 0.3和0.2的sin函数不同的权重并把它们加起来。所以也可以由下图来表示。<br><img src="frequencedomain1.JPG" alt="frequencedomain"><br><img src="frequencedomain2.JPG" alt="frequencedomain"><br>虽然两张图看起来截然不同，但是他们表述的是同种东西，而傅立叶变换就是描述这种从时域到频率域的变换。<br>当然也要考虑相位的变化。<br><img src="phase.JPG" alt="phase"></p>
+<h2 id="用一个例子解释一维傅立叶变换"><a href="#用一个例子解释一维傅立叶变换" class="headerlink" title="用一个例子解释一维傅立叶变换"></a>用一个例子解释一维傅立叶变换</h2><p>我们一般描述一个函数都是基于时间域，如图所示表示了这个函数随时间变化的变化（x轴是时间的变化，y轴是（信号）强度的变化）。<br><img src="timedomain.JPG" alt="timedomain"><br>但是其实还有一种方法也可以描述这个函数，就是频率域。就比如上图中的函数可以写成<br>f(x) = 3sin(0.8x) + 7sin(0.3x) + 2sin(0.2x)<br>的形式。就是相当于给了频率为0.8, 0.3和0.2的sin函数不同的权重并把它们加起来。所以也可以由下图来表示。<br><img src="frequencedomain1.JPG" alt="frequencedomain"><br><img src="frequencedomain2.JPG" alt="frequencedomain"><br>虽然两张图看起来截然不同，但是他们表述的是同种东西，而傅立叶变换就是描述这种从时域到频率域的变换。<br>当然也要考虑相位的变化。<br><img src="phase.JPG" alt="phase"></p>
+<hr>
+<h2 id="傅立叶变换在二维图像处理中的应用"><a href="#傅立叶变换在二维图像处理中的应用" class="headerlink" title="傅立叶变换在二维图像处理中的应用"></a>傅立叶变换在二维图像处理中的应用</h2><p>图像处理中的傅立叶变换是基于二维矩阵，如图所示，x轴和y轴共同表示图像中的位置，z轴表示每个位置（像素点）的灰度值。<br><img src="imagedomain.JPG" alt="imagedomain"></p>
+<p>和之前的一维函数相比较可以得出对应关系：</p>
+<table>
+<thead>
+<tr>
+<th>一维函数</th>
+<th>二维图像</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>时间</td>
+<td>距离</td>
+</tr>
+<tr>
+<td>信号强度</td>
+<td>灰度值</td>
+</tr>
+<tr>
+<td>### 傅立叶变换的特点</td>
+<td></td>
+</tr>
+<tr>
+<td>图像DFT(离散傅立叶变换)的基本属性是其周期性和复共轭对称性。频谱以周期N在两个方向上无止境地重复，即F（u，v）= F（u + kN，v + lN）其中k，l∈[-∞，…，-1，0，1， 2，…，∞]。从具有2D DFT的N×N图像计算出的傅立叶系数F（u，v）的N×N块是此无限序列的单个周期</td>
+<td></td>
+</tr>
+</tbody></table>
 
         
         <br />
