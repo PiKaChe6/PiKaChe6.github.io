@@ -60,32 +60,32 @@
             <li >
                 <a href="/">
                     <i class="iconfont icon-shouye1"></i>
-                    <span>HOME</span>
+                    <span>主页</span>
                 </a>
             </li>
             <li >
                 <a href="/tags">
                     <i class="iconfont icon-biaoqian1"></i>
-                    <span>TAGS</span>
+                    <span>标签</span>
                 </a>
             </li>
             <li >
                 <a href="/archives">
                     <i class="iconfont icon-guidang2"></i>
-                    <span>ARCHIVES</span>
+                    <span>存档</span>
                 </a>
             </li>
             <li >
                 <a href="/about/">
                     <i class="iconfont icon-guanyu2"></i>
-                    <span>ABOUT</span>
+                    <span>关于</span>
                 </a>
             </li>
             
             <li>
                 <a id="search">
                     <i class="iconfont icon-sousuo1"></i>
-                    <span>SEARCH</span>
+                    <span>搜索</span>
                 </a>
             </li>
             
@@ -93,7 +93,7 @@
     </div>
     
         <div id="toc" class="toc-article">
-    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#用一个例子解释一维傅立叶变换"><span class="toc-text">用一个例子解释一维傅立叶变换</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#傅立叶变换在二维图像处理中的应用"><span class="toc-text">傅立叶变换在二维图像处理中的应用</span></a></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#用一个例子解释一维傅立叶变换"><span class="toc-text">用一个例子解释一维傅立叶变换</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#傅立叶变换在二维图像处理中的应用"><span class="toc-text">傅立叶变换在二维图像处理中的应用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#傅立叶变换的特点"><span class="toc-text">傅立叶变换的特点</span></a></li></ol></li></ol>
 </div>
     
 </div>
@@ -104,7 +104,7 @@
         <div class="search-input">
             <span id="esc-search"> <i class="icon-fanhui iconfont"></i></span>
             <input id="search-input"/>
-            <span id="begin-search">search</span>
+            <span id="begin-search">搜索</span>
         </div>
         <div class="search-result-container" id="search-result-container">
 
@@ -128,10 +128,10 @@
     </div>
 
     <div class="post-meta">
-        <span class="attr">Post：<span>2020-05-09 14:14:48</span></span>
+        <span class="attr">发布于：<span>2020-05-09 14:14:48</span></span>
         
         </span>
-        <span class="attr">Visit：<span id="busuanzi_value_page_pv"></span>
+        <span class="attr">访问：<span id="busuanzi_value_page_pv"></span>
 </span>
 </span>
     </div>
@@ -162,15 +162,10 @@
 <td>信号强度</td>
 <td>灰度值</td>
 </tr>
-<tr>
-<td>### 傅立叶变换的特点</td>
-<td></td>
-</tr>
-<tr>
-<td>图像DFT(离散傅立叶变换)的基本属性是其周期性和复共轭对称性。频谱以周期N在两个方向上无止境地重复，即F（u，v）= F（u + kN，v + lN）其中k，l∈[-∞，…，-1，0，1， 2，…，∞]。从具有2D DFT的N×N图像计算出的傅立叶系数F（u，v）的N×N块是此无限序列的单个周期</td>
-<td></td>
-</tr>
 </tbody></table>
+<hr>
+<h3 id="傅立叶变换的特点"><a href="#傅立叶变换的特点" class="headerlink" title="傅立叶变换的特点"></a>傅立叶变换的特点</h3><p>图像DFT(离散傅立叶变换)的基本属性是其周期性和复共轭对称性。频谱以周期N在两个方向上无止境地重复，即F（u，v）= F（u + kN，v + lN）其中k，l∈[-∞，…，-1，0，1， 2，…，∞]。从具有2D DFT的N×N图像计算出的傅立叶系数F（u，v）的N×N块是此无限序列的单个周期</p>
+<p>在频率域中的一点（u, v）的值F（u，v），他并不取决于空间域中的（x，y）的值，而是和整个图像空间的所有点都有关系，比如说，F（5，5）和空间域上的f（5，5）并没关系，取决于整幅图像。</p>
 
         
         <br />
