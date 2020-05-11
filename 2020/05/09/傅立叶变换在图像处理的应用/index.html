@@ -60,32 +60,32 @@
             <li >
                 <a href="/">
                     <i class="iconfont icon-shouye1"></i>
-                    <span>主页</span>
+                    <span>HOME</span>
                 </a>
             </li>
             <li >
                 <a href="/tags">
                     <i class="iconfont icon-biaoqian1"></i>
-                    <span>标签</span>
+                    <span>TAGS</span>
                 </a>
             </li>
             <li >
                 <a href="/archives">
                     <i class="iconfont icon-guidang2"></i>
-                    <span>存档</span>
+                    <span>ARCHIVES</span>
                 </a>
             </li>
             <li >
                 <a href="/about/">
                     <i class="iconfont icon-guanyu2"></i>
-                    <span>关于</span>
+                    <span>ABOUT</span>
                 </a>
             </li>
             
             <li>
                 <a id="search">
                     <i class="iconfont icon-sousuo1"></i>
-                    <span>搜索</span>
+                    <span>SEARCH</span>
                 </a>
             </li>
             
@@ -93,7 +93,7 @@
     </div>
     
         <div id="toc" class="toc-article">
-    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#用一个例子解释一维傅立叶变换"><span class="toc-text">用一个例子解释一维傅立叶变换</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#傅立叶变换在二维图像处理中的应用"><span class="toc-text">傅立叶变换在二维图像处理中的应用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#傅立叶变换的特点"><span class="toc-text">傅立叶变换的特点</span></a></li></ol></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#用一个例子解释一维傅立叶变换"><span class="toc-text">用一个例子解释一维傅立叶变换</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#傅立叶变换在二维图像处理中的应用"><span class="toc-text">傅立叶变换在二维图像处理中的应用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#傅立叶变换的特点"><span class="toc-text">傅立叶变换的特点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#二维图像中傅立叶变换的原理"><span class="toc-text">二维图像中傅立叶变换的原理</span></a></li></ol></li></ol>
 </div>
     
 </div>
@@ -104,7 +104,7 @@
         <div class="search-input">
             <span id="esc-search"> <i class="icon-fanhui iconfont"></i></span>
             <input id="search-input"/>
-            <span id="begin-search">搜索</span>
+            <span id="begin-search">search</span>
         </div>
         <div class="search-result-container" id="search-result-container">
 
@@ -128,10 +128,10 @@
     </div>
 
     <div class="post-meta">
-        <span class="attr">发布于：<span>2020-05-09 14:14:48</span></span>
+        <span class="attr">Post：<span>2020-05-09 14:14:48</span></span>
         
         </span>
-        <span class="attr">访问：<span id="busuanzi_value_page_pv"></span>
+        <span class="attr">Visit：<span id="busuanzi_value_page_pv"></span>
 </span>
 </span>
     </div>
@@ -145,7 +145,7 @@
 <hr>
 <h2 id="用一个例子解释一维傅立叶变换"><a href="#用一个例子解释一维傅立叶变换" class="headerlink" title="用一个例子解释一维傅立叶变换"></a>用一个例子解释一维傅立叶变换</h2><p>我们一般描述一个函数都是基于时间域，如图所示表示了这个函数随时间变化的变化（x轴是时间的变化，y轴是（信号）强度的变化）。<br><img src="timedomain.JPG" alt="timedomain"><br>但是其实还有一种方法也可以描述这个函数，就是频率域。就比如上图中的函数可以写成<br>f(x) = 3sin(0.8x) + 7sin(0.3x) + 2sin(0.2x)<br>的形式。就是相当于给了频率为0.8, 0.3和0.2的sin函数不同的权重并把它们加起来。所以也可以由下图来表示。<br><img src="frequencedomain1.JPG" alt="frequencedomain"><br><img src="frequencedomain2.JPG" alt="frequencedomain"><br>虽然两张图看起来截然不同，但是他们表述的是同种东西，而傅立叶变换就是描述这种从时域到频率域的变换。<br>当然也要考虑相位的变化。<br><img src="phase.JPG" alt="phase"></p>
 <hr>
-<h2 id="傅立叶变换在二维图像处理中的应用"><a href="#傅立叶变换在二维图像处理中的应用" class="headerlink" title="傅立叶变换在二维图像处理中的应用"></a>傅立叶变换在二维图像处理中的应用</h2><p>图像处理中的傅立叶变换是基于二维矩阵，如图所示，x轴和y轴共同表示图像中的位置，z轴表示每个位置（像素点）的灰度值。<br><img src="imagedomain.JPG" alt="imagedomain"></p>
+<h2 id="傅立叶变换在二维图像处理中的应用"><a href="#傅立叶变换在二维图像处理中的应用" class="headerlink" title="傅立叶变换在二维图像处理中的应用"></a>傅立叶变换在二维图像处理中的应用</h2><p><img src="dft.png" alt="DFT"><br>傅立叶变换在二维图像处理中想法与之前一维类似，图像处理中的傅立叶变换是基于二维矩阵，如图所示，x轴和y轴共同表示图像中的位置，z轴表示每个位置（像素点）的灰度值。<br><img src="imagedomain.JPG" alt="imagedomain"></p>
 <p>和之前的一维函数相比较可以得出对应关系：</p>
 <table>
 <thead>
@@ -164,8 +164,8 @@
 </tr>
 </tbody></table>
 <hr>
-<h3 id="傅立叶变换的特点"><a href="#傅立叶变换的特点" class="headerlink" title="傅立叶变换的特点"></a>傅立叶变换的特点</h3><p>图像DFT(离散傅立叶变换)的基本属性是其周期性和复共轭对称性。频谱以周期N在两个方向上无止境地重复，即F（u，v）= F（u + kN，v + lN）其中k，l∈[-∞，…，-1，0，1， 2，…，∞]。从具有2D DFT的N×N图像计算出的傅立叶系数F（u，v）的N×N块是此无限序列的单个周期</p>
-<p>在频率域中的一点（u, v）的值F（u，v），他并不取决于空间域中的（x，y）的值，而是和整个图像空间的所有点都有关系，比如说，F（5，5）和空间域上的f（5，5）并没关系，取决于整幅图像。</p>
+<h3 id="傅立叶变换的特点"><a href="#傅立叶变换的特点" class="headerlink" title="傅立叶变换的特点"></a>傅立叶变换的特点</h3><p>图像DFT(离散傅立叶变换)的基本属性是其周期性和复共轭对称性。频谱以周期N在两个方向上无止境地重复，即F（u，v）= F（u + kN，v + lN）其中k，l∈[-∞，…，-1，0，1， 2，…，∞]。从具有2D DFT的N×N图像计算出的傅立叶系数F（u，v）的N×N块是此无限序列的单个周期<br><img src="equation.png" alt="equation"><br>注意看这里对于频率域的每个点（u，v）都需要时间域的相关信息。</p>
+<h3 id="二维图像中傅立叶变换的原理"><a href="#二维图像中傅立叶变换的原理" class="headerlink" title="二维图像中傅立叶变换的原理"></a>二维图像中傅立叶变换的原理</h3><p>二维的sin波动可以用如下公式表述：<br><em>z = a sin(ux+vy)</em><br>z是波的高度（强度）。<br>a是幅值，表示波的最高高度。<br>u是波浪在x方向上重复的次数（x方向上的频率）。<br>v是波浪在y方向上重复的次数（y方向上的频率）。<br>如图所示，当v=0的时候，sin的波只在x轴方向波动，当u=0的时候，sin的波只在y轴方向波动，如果u和v都不为0，那么就会在xy叠加方向以角度u/v波动（比如对角线方向）。<br><img src="waves.png" alt="waves"><br>如下图，把每个像素点上述的波叠加起来，然后这些波会相互抵消，相互叠加。<br><img src="waves2.png" alt="waves_overlay"><br>u是波浪在x方向上重复的次数（x方向上的频率），它可以是1，2，3…     1表示单位距离内在x方向上重复1次，2表示单位距离内在x方向上重复2次…<br>比如，f（2，2）这个像素，它的灰度值在x方向上以sin波波动了3次，在y方向上以sin波波动了4次，那么它在频率域对于点F（3，4）就有一点贡献。F（u，v）的值就是这张图内所有像素点贡献值之和，就是在那个x方向u频率和y方向的v频率的sin波动的强度大小的矢量和。F(3，4)那点的亮度就是表示了整张图的所有像素点在x方向上以频率3灰度的波动和在y方向上以频率4灰度的波动之和的强度（能量大小）。在频率域上的中心点（0，0）表示在x和y方向上都没有波动，它的值是所有灰度值和的平均值。</p>
 
         
         <br />
