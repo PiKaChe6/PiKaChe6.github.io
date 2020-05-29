@@ -93,7 +93,7 @@
     </div>
     
         <div id="toc" class="toc-article">
-    
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#引用"><span class="toc-text">引用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#引用传参"><span class="toc-text">引用传参</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#指针"><span class="toc-text">指针</span></a></li></ol>
 </div>
     
 </div>
@@ -136,7 +136,16 @@
 </span>
     </div>
     <div class="post-content no-indent">
-        
+        <h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><p>引用（&amp;）是标识符的别名（引用并非为对象，相反的，它只是为一个已经存在的对象所起的另外的名字）。为引用赋值，实际上是把值赋给了与引用绑定的对象。获取引用的值，实际上是获取了与引用绑定的对象的值。同理，以引用作为初始值，实际上是以与引用绑定的对象作为初始值。<br>定义一个引用时，必须同时对它进行初始化，使它指向一个已存在的对象。<br>一旦一个引用被初始化后，引用和初始值对象绑定在一起，就不能改为指向其他对象<br>对引用进行修改，也就是等于对和引用绑定的对象进行修改。(可以把绑定之后的引用和对象看成一种东西)</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> a = <span class="number">10</span>;</span><br><span class="line"><span class="keyword">int</span> &amp; ref = a;</span><br><span class="line">ref = <span class="number">20</span>; <span class="comment">//此时a的值也是20。</span></span><br></pre></td></tr></table></figure>
+<h3 id="引用传参"><a href="#引用传参" class="headerlink" title="引用传参"></a>引用传参</h3><p>用一个例子解释引用的作用。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"Sales_item.h"</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">func1</span><span class="params">(<span class="keyword">int</span> a)</span></span>&#123;</span><br><span class="line">    a = a*<span class="number">3</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">func2</span><span class="params">(<span class="keyword">int</span> &amp; a)</span></span>&#123;</span><br><span class="line">    a = a*<span class="number">3</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> b = <span class="number">10</span>;</span><br><span class="line">    func1(b);</span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt;b&lt;&lt;<span class="built_in">endl</span>; <span class="comment">//此时b = 1。</span></span><br><span class="line">    func2(b);</span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt;b&lt;&lt;<span class="built_in">endl</span>;<span class="comment">//此时b = 30。</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>因为使用函数1的时候<br>int main() {<br>  int b = 10; 把b赋值为10。<br>  func1(b）等价于func1(<strong>int a = b</strong>）把b的10赋值给a{<br>  a = a*3;a等于30。<br>}<br>  函数调用结束，函数内创建的变量（a）都会被销毁。<br>  所以打印出的b等于原来的10。<br>}</li>
+<li>而使用函数2的时候<br>int main() {<br>  int b = 10; 把b赋值为10。<br>  func2(b）等价于func1(<strong>int &amp; a = b</strong>）把b和引用a绑定，此时a是b的别名，a和b的地址相同，修改a的值等同于修改b的值{<br>  a = a*3; a等于30，此时b也等于30，因为a和b此时已经绑定在一起了。<br>}<br>  函数调用结束，函数内创建的变量（a）都会被销毁。<br>  所以打印出的b已经通过函数2被改变了值为30。<br>}</li>
+</ul>
+<hr>
+<h2 id="指针"><a href="#指针" class="headerlink" title="指针"></a>指针</h2>
         
         <br />
         <div id="comment-container">
