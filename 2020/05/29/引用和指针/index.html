@@ -60,32 +60,32 @@
             <li >
                 <a href="/">
                     <i class="iconfont icon-shouye1"></i>
-                    <span>主页</span>
+                    <span>HOME</span>
                 </a>
             </li>
             <li >
                 <a href="/tags">
                     <i class="iconfont icon-biaoqian1"></i>
-                    <span>标签</span>
+                    <span>TAGS</span>
                 </a>
             </li>
             <li >
                 <a href="/archives">
                     <i class="iconfont icon-guidang2"></i>
-                    <span>存档</span>
+                    <span>ARCHIVES</span>
                 </a>
             </li>
             <li >
                 <a href="/about/">
                     <i class="iconfont icon-guanyu2"></i>
-                    <span>关于</span>
+                    <span>ABOUT</span>
                 </a>
             </li>
             
             <li>
                 <a id="search">
                     <i class="iconfont icon-sousuo1"></i>
-                    <span>搜索</span>
+                    <span>SEARCH</span>
                 </a>
             </li>
             
@@ -104,7 +104,7 @@
         <div class="search-input">
             <span id="esc-search"> <i class="icon-fanhui iconfont"></i></span>
             <input id="search-input"/>
-            <span id="begin-search">搜索</span>
+            <span id="begin-search">search</span>
         </div>
         <div class="search-result-container" id="search-result-container">
 
@@ -128,10 +128,10 @@
     </div>
 
     <div class="post-meta">
-        <span class="attr">发布于：<span>2020-05-29 22:48:39</span></span>
+        <span class="attr">Post：<span>2020-05-29 22:48:39</span></span>
         
         </span>
-        <span class="attr">访问：<span id="busuanzi_value_page_pv"></span>
+        <span class="attr">Visit：<span id="busuanzi_value_page_pv"></span>
 </span>
 </span>
     </div>
@@ -194,12 +194,13 @@
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">double</span> dval = <span class="number">3.14</span>;	<span class="comment">//对象：非常量</span></span><br><span class="line">cptr = &amp;dval;	<span class="comment">//指针：常量</span></span><br></pre></td></tr></table></figure>
 <p>和常量引用一样，指向常量的指针没有规定其所指对象必须是一个常量。所谓指向常量的指针仅仅要求不能通过该指针改变对象的值，而没有规定那个对象的值能不能通过其他途径改变。</p>
 <h4 id="const指针"><a href="#const指针" class="headerlink" title="const指针"></a>const指针</h4></li>
-<li><p>指向常量的指针（pointer to const）：const int*ptr = &amp;pi: 指针变量保存的内存地址是可以修改的，指针变量所指向的内存也是允许读取数据的，但是我们不能修改指针变量里面所指向的内存里面的数据。</p>
+<li><p>指向常量的指针（pointer to const）：const int*ptr = &amp;pi: 指针变量保存的内存地址是可以修改的，指针变量所指向的内存也是允许读取数据的，但是我们不能修改指针变量里面所指向的内存里面的数据。<strong>底层const：</strong>指针所指的对象是个常量。</p>
 </li>
-<li><p>常量指针（const pointer）：int *const ptr= &amp;pi: 针变量保存的内存地址不可以修改，指针变量所指向的内存也是允许读取数据的，但是我们可以修改指针变量里面所指向的内存里面的数据。常量指针必须初始化，初始化一旦完成，则它的值（存放在指针中的地址）就不能再改变了。</p>
+<li><p>常量指针（const pointer）：int *const ptr= &amp;pi: 针变量保存的内存地址不可以修改，指针变量所指向的内存也是允许读取数据的，但是我们可以修改指针变量里面所指向的内存里面的数据。常量指针必须初始化，初始化一旦完成，则它的值（存放在指针中的地址）就不能再改变了。<strong>顶层const：</strong>指针本身就是一个常量。</p>
 </li>
-<li><p>指向常量的常量指针：const int *const ptr = &amp;pi: 针变量保存的内存地址不可以修改，指针变量所指向的内存是允许读取数据的，我们不可以修改指针变量里面所指向的内存里面的数据。</p>
+<li><p>指向常量的常量指针：const int *const ptr = &amp;pi: 针变量保存的内存地址不可以修改，指针变量所指向的内存是允许读取数据的，我们不可以修改指针变量里面所指向的内存里面的数据。<strong>既是顶层const又是底层const：</strong>指针本身是个常量，而且他所指的对象也是常量。</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> number1 = <span class="number">233</span>;</span><br><span class="line">    <span class="keyword">int</span> number2 = <span class="number">666</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//指向常量的指针（pointer to const）</span></span><br><span class="line">    <span class="keyword">const</span> <span class="keyword">int</span> *pointer =  &amp;number1;</span><br><span class="line">		pointer = &amp;number2;	<span class="comment">//可以修改指针变量保存的地址</span></span><br><span class="line">    *pointer = <span class="number">666</span>;	<span class="comment">//错误，不能修改指针变量里面所指向的内存里面的数据</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment">//常量指针（const pointer）</span></span><br><span class="line">    <span class="keyword">int</span> *<span class="keyword">const</span> pointer2 = &amp;number1;</span><br><span class="line">    pointer2 = &amp;number2;	<span class="comment">//错误，不能修改指针变量保存的地址</span></span><br><span class="line">    *pointer2 = <span class="number">666</span>; <span class="comment">//可以修改指针变量里面所指向的内存里面的数据</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment">//指向常量的常量指针</span></span><br><span class="line">    <span class="keyword">const</span> <span class="keyword">int</span> *<span class="keyword">const</span> pointer3 = &amp;number1;</span><br><span class="line">    pointer3 = &amp;number2;	<span class="comment">//错误，不能修改指针变量保存的地址</span></span><br><span class="line">    *pointer2 = <span class="number">666</span>; <span class="comment">//错误，不可以修改指针变量里面所指向的内存里面的数据</span></span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>执行拷贝时，常量是顶层const还是底层const区别明显。其中顶层const（常量指针）不受什么影响。但是底层const（指向常量的指针）的限制不容忽视。当执行对象的拷贝操作时，拷入和拷出的对象必须具有相同的底层const资格，或者两个对象的数据类型必须能够转换。一般来说，非常量可以赋值给常量，反之不行。</p>
 </li>
 </ul>
 
