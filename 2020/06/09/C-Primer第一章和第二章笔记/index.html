@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="郭宇祥的博客">
+    <meta name="keyword"  content="">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>
+        
+        C++Primer第一章和第二章笔记 - PiKaChe&#39;s Blog
+        
+    </title>
+
+    <!-- Custom CSS -->
+    
+<link rel="stylesheet" href="/css/aircloud.css">
+
+    
+<link rel="stylesheet" href="/css/gitment.css">
+
+    <!--<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">-->
+    <link href="//at.alicdn.com/t/font_620856_pl6z7sid89qkt9.css" rel="stylesheet" type="text/css">
+    <!-- ga & ba script hoook -->
+    <script></script>
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body>
+
+<div class="site-nav-toggle" id="site-nav-toggle">
+    <button>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+    </button>
+</div>
+
+<div class="index-about">
+    <i> self-discipline </i>
+</div>
+
+<div class="index-container">
+    
+    <div class="index-left">
+        
+<div class="nav" id="nav">
+    <div class="avatar-name">
+        <div class="avatar ">
+            <img src="/img/avatar.jpg" />
+        </div>
+        <div class="name">
+            <i>皮卡车</i>
+        </div>
+    </div>
+    <div class="contents" id="nav-content">
+        <ul>
+            <li >
+                <a href="/">
+                    <i class="iconfont icon-shouye1"></i>
+                    <span>HOME</span>
+                </a>
+            </li>
+            <li >
+                <a href="/tags">
+                    <i class="iconfont icon-biaoqian1"></i>
+                    <span>TAGS</span>
+                </a>
+            </li>
+            <li >
+                <a href="/archives">
+                    <i class="iconfont icon-guidang2"></i>
+                    <span>ARCHIVES</span>
+                </a>
+            </li>
+            <li >
+                <a href="/about/">
+                    <i class="iconfont icon-guanyu2"></i>
+                    <span>ABOUT</span>
+                </a>
+            </li>
+            
+            <li>
+                <a id="search">
+                    <i class="iconfont icon-sousuo1"></i>
+                    <span>SEARCH</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    
+        <div id="toc" class="toc-article">
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#第一章"><span class="toc-text">第一章</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#读取数量不定的输入数据"><span class="toc-text">读取数量不定的输入数据</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#第二章（变量和基本类型）"><span class="toc-text">第二章（变量和基本类型）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#基本数据类型"><span class="toc-text">基本数据类型</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#默认初始化"><span class="toc-text">默认初始化</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#声明-declaration-和定义-definition"><span class="toc-text">声明(declaration)和定义(definition)</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#复合类型-具体见另一篇文章"><span class="toc-text">复合类型(具体见另一篇文章)</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#引用"><span class="toc-text">引用</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#指针"><span class="toc-text">指针</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#定义指针"><span class="toc-text">定义指针</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#使用指针"><span class="toc-text">使用指针</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#指针所占用的内存空间"><span class="toc-text">指针所占用的内存空间</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#空指针和野指针"><span class="toc-text">空指针和野指针</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#常量表达式"><span class="toc-text">常量表达式</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#处理类型"><span class="toc-text">处理类型</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#类型别名"><span class="toc-text">类型别名</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#auto类型说明符"><span class="toc-text">auto类型说明符</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#复合类型，常量和auto"><span class="toc-text">复合类型，常量和auto</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#decltype"><span class="toc-text">decltype</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#自定义数据结构"><span class="toc-text">自定义数据结构</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#struct和class的区别"><span class="toc-text">struct和class的区别</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#类数据成员（attribute）"><span class="toc-text">类数据成员（attribute）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#头文件"><span class="toc-text">头文件</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#头文件的书写规范"><span class="toc-text">头文件的书写规范</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#头文件保护符（header-guard）"><span class="toc-text">头文件保护符（header guard）</span></a></li></ol></li></ol></li></ol></li></ol>
+</div>
+    
+</div>
+
+
+<div class="search-field" id="search-field">
+    <div class="search-container">
+        <div class="search-input">
+            <span id="esc-search"> <i class="icon-fanhui iconfont"></i></span>
+            <input id="search-input"/>
+            <span id="begin-search">search</span>
+        </div>
+        <div class="search-result-container" id="search-result-container">
+
+        </div>
+    </div>
+</div>
+
+        <div class="index-about-mobile">
+            <i> self-discipline </i>
+        </div>
+    </div>
+    
+    <div class="index-middle">
+        <!-- Main Content -->
+        
+
+
+<div class="post-container">
+    <div class="post-title">
+        C++Primer第一章和第二章笔记
+    </div>
+
+    <div class="post-meta">
+        <span class="attr">Post：<span>2020-06-09 16:17:39</span></span>
+        
+        </span>
+        <span class="attr">Visit：<span id="busuanzi_value_page_pv"></span>
+</span>
+</span>
+    </div>
+    <div class="post-content no-indent">
+        <h2 id="第一章"><a href="#第一章" class="headerlink" title="第一章"></a>第一章</h2><pre><code>++val;</code></pre><p>表示了val = val+1;<br>源代码模式 commad + /</p>
+<h4 id="读取数量不定的输入数据"><a href="#读取数量不定的输入数据" class="headerlink" title="读取数量不定的输入数据"></a>读取数量不定的输入数据</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">while (std::cin&gt;&gt;value)</span><br></pre></td></tr></table></figure>
+<p>while 会一直执行直到遇到文件结束符（或错误输入）。<br>在这里clion对ctrl +d的是stop and rerun， 所以结束输入就不能用ctrl+d，但可以输入一个不是int的数据类型来结束它。</p>
+<h2 id="第二章（变量和基本类型）"><a href="#第二章（变量和基本类型）" class="headerlink" title="第二章（变量和基本类型）"></a>第二章（变量和基本类型）</h2><h3 id="基本数据类型"><a href="#基本数据类型" class="headerlink" title="基本数据类型"></a>基本数据类型</h3><p>当我们把一个非布尔类型的算数值赋给布尔类型时，初始值为0则结果为false，否则结果为true。<br>当我们把一个布尔值赋给非布尔类型时，初始值为false则结果为0，初始值为true则结果为1。</p>
+<hr>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>最小尺寸</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>char</td>
+<td>8 bit</td>
+</tr>
+<tr>
+<td>wchar_t</td>
+<td>16 bit</td>
+</tr>
+<tr>
+<td>int</td>
+<td>16 bit</td>
+</tr>
+<tr>
+<td>long</td>
+<td>32 bit</td>
+</tr>
+<tr>
+<td>long long</td>
+<td>64 bit</td>
+</tr>
+<tr>
+<td>float</td>
+<td>32 bit</td>
+</tr>
+<tr>
+<td>double</td>
+<td>64 bit</td>
+</tr>
+<tr>
+<td>long double</td>
+<td>96 or 128 bit</td>
+</tr>
+</tbody></table>
+<hr>
+<p>当一个算数表达式中既有无符号数又有int时，那个int值就会转成无符号数。比如：<br>unsigned u = 10;<br>int i = -42<br>std::cout&lt;&lt; u + i &lt;&lt; std::endl; 如果int占32位，输出4294967264。</p>
+<hr>
+<p>以0开头的整形代表8进制，以0x或0X的开头代表十六进制。<br>科学计数法，其中指数部分用E或e标识。50 = 5e1, 0.01 = 1e-2</p>
+<hr>
+<p>单引号字符char，双引号字符串。<br>字符串String字面值的类型实际上是由常量字符构成的数组（array）。<br>编译器在每个字符串的结尾处添加一个空字符（’\0’)，因此，字符串字面值的实际长度要比他的内容多1。例如，字面值’A’表示的是单独的字符A，而字符串”A”则代表了一个字符的数组，该数组包含两个字符：一个是字母A，另一个是空字符。</p>
+<hr>
+<p>‘a’就是char，L’a’就是wchar_t<br>char占一个字节，wchar_t占两个字节，也就是16个比特（bit），最大值就是2<sup>16</sup>-1=65535，到这里读者可以看出宽字符和窄字符最大的区别就是占字节大小的不同<br><img src="unicode.png" alt="unicode"></p>
+<p>10u: unsigned<br>3.14L: Long double<br>如’\012’就是八进制数012所对应的字符，也就是ASCII码10所对应的字符，即换行</p>
+<p><strong>需要注意的是转义序列在程序中是被当作字符而不是字符串来使用的</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cout&lt;&lt;&#39;2&#39;&lt;&lt;&#39;\t&#39;&lt;&lt;&#39;M&#39;&lt;&lt;&#39;\n&#39;;</span><br></pre></td></tr></table></figure>
+<h4 id="默认初始化"><a href="#默认初始化" class="headerlink" title="默认初始化"></a>默认初始化</h4><p>三条性质：</p>
+<p>1.定义在任何函数体外的变量会被初始化为0。 </p>
+<p>2.定义在函数体内部的变量不会被初始化。 </p>
+<p>3.类的对象未被初始化，则初值由类决定。</p>
+<h4 id="声明-declaration-和定义-definition"><a href="#声明-declaration-和定义-definition" class="headerlink" title="声明(declaration)和定义(definition)"></a>声明(declaration)和定义(definition)</h4><p>declaration: say the function exists. 在一个cpp文件中调用另一个cpp文件（一个函数），需要在cpp中声明这个被调用的函数</p>
+<p>definition: what the function is.</p>
+<p>①变量定义：用于为变量分配存储空间，还可为变量指定初始值。程序中，变量有且仅有一个定义。</p>
+<p>②变量声明：用于向程序表明变量的类型和名字。</p>
+<p>③定义也是声明：当定义变量时我们声明了它的类型和名字。</p>
+<p>④extern关键字：通过使用extern关键字声明变量名而不定义它。</p>
+<p>1、定义包含了声明，但是声明不包含定义，</p>
+<p>如  int a = 0; //定义并声明了变量 a</p>
+<p>extern int a;  //只是声明了有一个变量 a 存在，具体 a 在哪定义的，需要编译器编译的时候去找。<br>2、函数也是类似，定义的时候同时声明。但如果只是声明，编译器只知道有这么个函数，具体函数怎么定义的要编译器去找。</p>
+<p>void fun1();  //函数声明</p>
+<p>void fun1(){  //函数定义<br>    cout&lt;&lt;”fun1”&lt;&lt;endl;<br>}</p>
+<hr>
+<h3 id="复合类型-具体见另一篇文章"><a href="#复合类型-具体见另一篇文章" class="headerlink" title="复合类型(具体见另一篇文章)"></a>复合类型(具体见另一篇文章)</h3><h4 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h4><p>引用（&amp;）是标识符的别名（引用并非为对象，相反的，它只是为一个已经存在的对象所起的另外的名字）<br>为引用赋值，实际上是把值赋给了与引用绑定的对象。获取引用的值，实际上是获取了与引用绑定的对象的值。同理，以引用作为初始值，实际上是以与引用绑定的对象作为初始值。<br>定义一个引用时，必须同时对它进行初始化(比如 int &amp;a = b, 之前已经定义b = 10)，使它指向一个已存在的对象(b)</p>
+<p>例如：</p>
+<p>int i, j;</p>
+<p>int &amp;ri = i    //定义int的引用ri，并初始化为变量i的引用 </p>
+<p>一旦一个引用被初始化后，引用和初始值对象绑定在一起，就不能改为指向其他对象<br>对引用进行修改，也就是等于对和引用绑定的对象进行修改。(可以把绑定之后的引用和对象看成一种东西)</p>
+<h4 id="指针"><a href="#指针" class="headerlink" title="指针"></a>指针</h4><p>可以通过指针来间接访问内存</p>
+<h5 id="定义指针"><a href="#定义指针" class="headerlink" title="定义指针"></a>定义指针</h5><p>int a =10;<br>数据类型 * 指针变量<br>int * p;<br>让指针记录变量a的地址， &amp;这个操作符就是取地址。<br>p = &amp;a；</p>
+<h5 id="使用指针"><a href="#使用指针" class="headerlink" title="使用指针"></a>使用指针</h5><p>可以通过解引用的方式来找到指针的内存，找到指针p（原数据的地址）中的原数据</p>
+<ul>
+<li>p = 1000；//更改之后a的值也变为1000<h5 id="指针所占用的内存空间"><a href="#指针所占用的内存空间" class="headerlink" title="指针所占用的内存空间"></a>指针所占用的内存空间</h5>在32位操作系统：占用4个字节<br>在64位操作系统：占用8个字节(所有指针，int *，float * ，char *……)<h5 id="空指针和野指针"><a href="#空指针和野指针" class="headerlink" title="空指针和野指针"></a>空指针和野指针</h5>空指针：指针变量指向内存为0的空间<br>用途：初始化指针变量<br>注意：空指针指向的内存是不可以访问的, 0~255为系统占用内存<br>int * p = NULL;</li>
+</ul>
+<hr>
+<p>野指针：指针变量指向非法的内存空间<br>int * p = (int * )0x1100; 自己定义的一个16进制数，自己定义的一块内存</p>
+<h4 id="常量表达式"><a href="#常量表达式" class="headerlink" title="常量表达式"></a>常量表达式</h4><p>常量表达式（<strong>const expression</strong>）是指<strong>不会改变</strong>并且<strong>在编译过程就能得到计算结果</strong>的表达式。<br>常量表达式主要是允许一些计算发生在编译时，即发生在代码编译而不是运行的时候。这是很大的优化：假如有些事情可以在编译时做，它将只做一次，而不是每次程序运行时。需要计算一个编译时已知的常量，比如特定值的sine或cosin？确实你亦可以使用库函数sin或cos，但那样你必须花费运行时的开销。使用constexpr，你可以创建一个编译时的函数，它将为你计算出你需要的数值。用户的电脑将不需要做这些工作。<br>一个对象是不是常量表达式由它的数据类型和初始值共同决定：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> max_files = <span class="number">20</span>;	<span class="comment">// 是常量表达式</span></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> limit = max_files + <span class="number">1</span> <span class="comment">//是常量表达式</span></span><br><span class="line"><span class="keyword">int</span> staff_size = <span class="number">27</span>; <span class="comment">// 不是常量表达式</span></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> sz = get_size();	<span class="comment">// sz不是常量表达式</span></span><br></pre></td></tr></table></figure>
+
+<p>尽管staff_size的初始值（27）是个字面常量值，但是由于它的数据类型只是个普通的int而非const int所以不属于常量表达式<br>尽管sz本身是个常量，但是具体值到运行时才能获取到，所以也不是常量表达式<br><strong>常量表达式就是等号左右两边都是常量的表达式。</strong><br>一般来说，如果你认定变量是一个常量表达式，那就把它声明成constexpr类型</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">constexpr</span> <span class="keyword">int</span> mf = <span class="number">20</span>;	<span class="comment">//20是常量表达式</span></span><br><span class="line"><span class="keyword">constexpr</span> <span class="keyword">int</span> limit = mf + <span class="number">1</span>; <span class="comment">//mf + 1是个常量表达式</span></span><br><span class="line"><span class="keyword">constexpr</span> sz = <span class="built_in">size</span>();	<span class="comment">//只有当size是一个constexpr函数时才是一条正确的声明语句</span></span><br></pre></td></tr></table></figure>
+<p>常量表达式必须是<strong>字面值类型</strong>：算数类型，引用类型和指针类型。<br><strong>非字面值类型</strong>：自定义类Sales_item, IO库，String类不属于字面值类型，也就不能被定义成constexp指针的初始值必须是nullptr或者是0，或者是储存于某个固定地址中的对象。<br>函数体内定义的变量一般来说并非存放在固定地址中，因此constexpr指针不能指向这样的变量。相反的，定义于所有函数体之外的对象其固定地址不变，能用来初始化constexpr指针。<br>constexpr声明中如果定义了指针，限定符constexpr仅对指针有效，与指针所指的对象无关：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> *p = <span class="literal">nullptr</span>;	<span class="comment">//p是一个 指向整型常量 的指针</span></span><br><span class="line">constexprint *p = <span class="literal">nullptr</span>;	<span class="comment">//q是一个 指向整数 的 常量指针</span></span><br></pre></td></tr></table></figure>
+
+<hr>
+<h3 id="处理类型"><a href="#处理类型" class="headerlink" title="处理类型"></a>处理类型</h3><h4 id="类型别名"><a href="#类型别名" class="headerlink" title="类型别名"></a>类型别名</h4><p>有两种方法可以定义类型别名。</p>
+<ul>
+<li>传统的方法是使用关键字<strong>typedef</strong>：<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="keyword">double</span> wages;	<span class="comment">//wages是double的同义词,之后出现wages就和出现double一样</span></span><br><span class="line">wages x = <span class="number">10.1</span>；</span><br><span class="line"><span class="keyword">typedef</span> wages base, *p; <span class="comment">//base是double的同义词，p是double*的同义词</span></span><br></pre></td></tr></table></figure></li>
+<li>使用别名声明来定义类型的别名：<br>相对来说更加直观、简单<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> SI = Sales_item; <span class="comment">//SI是Sales_item的同义词</span></span><br><span class="line"><span class="keyword">using</span> x = <span class="keyword">double</span>; </span><br><span class="line">x number = <span class="number">666.66</span><span class="comment">//之后使用x就像使用double一样</span></span><br><span class="line">这种方法的关键字<span class="keyword">using</span>作为别名声明的开始，其后紧跟别名和等号，起作用是把等号左侧的名字规定成等号右侧的类型的别名。</span><br></pre></td></tr></table></figure>
+<h4 id="auto类型说明符"><a href="#auto类型说明符" class="headerlink" title="auto类型说明符"></a>auto类型说明符</h4>auto类型说明符：auto让编译器通过初试值来推算变量的类型。auto定义的变量必须有初始值。<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">auto</span> item = val1 + val2;</span><br></pre></td></tr></table></figure>
+此处编译器将根据val1和val2相加的结果来推断item的类型。如果val1和val2是类Sales_item的对象，则item的类型就是Sales_item;如果这两个变量类型是double，则item的类型就是double，以此类推。<h5 id="复合类型，常量和auto"><a href="#复合类型，常量和auto" class="headerlink" title="复合类型，常量和auto"></a>复合类型，常量和auto</h5>使用引用其实是使用引用的对象，特别是当被用作为初始值时，真正参与初始化的其实是引用对象的值。<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> i = <span class="number">0</span>, &amp;r = i;</span><br><span class="line"><span class="keyword">auto</span> a = r; <span class="comment">// a是一个整数（r是i的别名，而i是一个整数）</span></span><br></pre></td></tr></table></figure>
+auto会忽略掉顶层const（常量指针），同时底层const（指向指针的常量）则会保留下来，比如当初始值是一个指向常量的指针时。<br>但是</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> ci = i, &amp;cr = ci;</span><br><span class="line"><span class="keyword">auto</span> b = ci; <span class="comment">//b是一个整数（ci的顶层const特性被忽略了）</span></span><br><span class="line"><span class="keyword">auto</span> c = &amp;i; <span class="comment">//c是一个整型指针</span></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">auto</span> f = ci； <span class="comment">//如果希望推出的auto类型是一个顶层const，则需要明确指出</span></span><br></pre></td></tr></table></figure>
+<p>注意！！</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> i = <span class="number">42</span>;</span><br><span class="line"><span class="keyword">auto</span> *p = &amp;i;<span class="comment">//此时p的类型是const int*，指向指针的常量，底层const不会被忽略。</span></span><br></pre></td></tr></table></figure>
+<h4 id="decltype"><a href="#decltype" class="headerlink" title="decltype"></a>decltype</h4><p>作用：希望从表达式的类型推断出要定义的变量，但是不想用该表达式的值初始化变量。它的作用是选择并返回操作数的数据类型。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">decltype</span>(f()) sum = x;	<span class="comment">//sum的类型就是函数f的返回类型</span></span><br></pre></td></tr></table></figure>
+<p>如果decltype使用的表达式是个变量，则decltype返回该变量的类型（包括顶层const和引用在内）：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> ci = <span class="number">0</span>, &amp;cj = ci;</span><br><span class="line"><span class="keyword">decltype</span>(cj) x = <span class="number">0</span>;	<span class="comment">//x的类型是const int</span></span><br><span class="line"><span class="keyword">decltype</span>(cj) y = x; <span class="comment">//y的类型是const int&amp;，y绑定到变量x</span></span><br><span class="line"><span class="keyword">decltype</span>(cj) z; <span class="comment">//错误：z是一个引用，必须初始化</span></span><br></pre></td></tr></table></figure>
+<p>decltype和引用</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> i =<span class="number">42</span>, *p = &amp;i, &amp;r = i;</span><br><span class="line"><span class="keyword">decltype</span>(r) = a; <span class="comment">//a是int引用类型和通过引用r和i绑定</span></span><br><span class="line"><span class="keyword">decltype</span>(r+<span class="number">0</span>) b; <span class="comment">//正确，加法的结果是int，因此b是一个（未初始化的）int</span></span><br><span class="line"><span class="keyword">decltype</span>(*p) c; <span class="comment">//错误，c是int&amp;，必须初始化</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">decltype</span>((i)) d; <span class="comment">//错误，d是int&amp;，必须初始化</span></span><br><span class="line"><span class="keyword">decltype</span>(i) e; <span class="comment">//正确，e是一个未初始化的int</span></span><br></pre></td></tr></table></figure>
+<p>对于decltype：</p>
+<ul>
+<li>推测引用变量本身的类型得到的仍是引用</li>
+<li>如果表达式的内容是解引用操作（*p），decltype将得到引用类型</li>
+<li>推测变量的类型时，如果多加了一层括号，结果差别很大。双层括号的结果永远是引用，而decltype（variable）单层括号结果只有当varible本身就是一个引用时才是引用。</li>
+</ul>
+<hr>
+<p><strong>总结一下上面的区别</strong></p>
+<ul>
+<li>typedef, using: 把一些double，int等已知的数据类型重命名，命名成自己想要的名称。</li>
+<li>auto：通过初始值来推算变量的数据类型</li>
+<li>decltype：把某一个变量的数据类赋给另一个变量，让这两个数据变量类型相同。</li>
+</ul>
+<p><strong>auto和decltype的区别</strong><br>如果面对一个变量是引用，那么auto会把那个类型看作是和该引用绑定对象的类型（int），而decltype会把它看作是引用本身的引用类型（int &amp;）</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> i = <span class="number">42</span>, &amp;r = i;</span><br><span class="line"><span class="keyword">auto</span> a = r; <span class="comment">//a的类型是int（和r绑定的对象的类型）</span></span><br><span class="line"><span class="keyword">decltype</span>(r) b = i; <span class="comment">//b的类型是引用int&amp;，所以必须初始化和对象i绑定</span></span><br></pre></td></tr></table></figure>
+
+<hr>
+<h3 id="自定义数据结构"><a href="#自定义数据结构" class="headerlink" title="自定义数据结构"></a>自定义数据结构</h3><p>数据结构是把一组相关的数据元素组织起来然后使用他们的策略和方法。就比如说int就是把所有整数作为一种数据类型，所以我们也可以自己定义某一类具有共同点的元素作为数据类型。<br>比如说Sales_data类型</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Sales_data</span>&#123;</span></span><br><span class="line">	<span class="built_in">std</span>::<span class="built_in">string</span> bookNo; <span class="comment">//书的编号</span></span><br><span class="line">	<span class="keyword">unsigned</span> units_sold = <span class="number">0</span>; <span class="comment">// 卖出的数量，无符数</span></span><br><span class="line">	<span class="keyword">double</span> revenue = <span class="number">0.0</span>; <span class="comment">//收入</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>自定义数据结构以关键字struct开始，紧跟着类名和实体，最后的分号不能省略<br>还有一种自定义结构以class作为关键字，也就是常说的类。以后会经常遇到。</p>
+<h4 id="struct和class的区别"><a href="#struct和class的区别" class="headerlink" title="struct和class的区别"></a>struct和class的区别</h4><p>在C++中struct和class的唯一区别就在于<strong>默认的访问权限不同</strong>, 继承的时候不推荐使用struct</p>
+<ul>
+<li>struct默认权限为public</li>
+<li>class默认权限为private<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">C1</span>&#123;</span></span><br><span class="line">	<span class="keyword">int</span> a;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">C2</span>&#123;</span></span><br><span class="line">	<span class="keyword">int</span> a;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	C1 c1; <span class="comment">//实例化</span></span><br><span class="line">	c1.a = <span class="number">10</span>; <span class="comment">//错误，默认的情况下class的成员为private，只能在类内访问，不能在类外访问</span></span><br><span class="line">	C2 c2；</span><br><span class="line">	c2.a = <span class="number">10</span>； <span class="comment">//正确，默认的情况下struct的成员为public，既能在类内访问，又能在类外访问</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+类内部定义的名字必须唯一，但是可以与类外部定义的名字重复。<br>类体右侧的表示结束的花括号后必须写一个分号，因为类体后面可以紧跟变量名以示对该对象的定义所以分号不可少。<h4 id="类数据成员（attribute）"><a href="#类数据成员（attribute）" class="headerlink" title="类数据成员（attribute）"></a>类数据成员（attribute）</h4></li>
+<li>类的数据成员定义了类的对象的具体内容</li>
+<li>每个对象有自己的一份数据成员拷贝</li>
+<li>修改一个数据成员，不会印象其他对象</li>
+<li>创建对象时，类内初始值将用于初始化数据成员。没有初始值的成员将被默认初始化（0，空字符…）。</li>
+</ul>
+<h4 id="头文件"><a href="#头文件" class="headerlink" title="头文件"></a>头文件</h4><p>为了确保各个文件中类的定义一致，类通常被定义在头文件中，而且类所在头文件的名字应与类的名字一样，例如把Sales_data类定义在名为Sales_data.h的头文件中。<br>头文件通常包含那些只能被定义一次的实体，如类、const变量和constexpr变量等</p>
+<h5 id="头文件的书写规范"><a href="#头文件的书写规范" class="headerlink" title="头文件的书写规范"></a>头文件的书写规范</h5><ul>
+<li>#include”header.h” //表明当前文件和”header.h”处于同一工程且同一目录，一般是自己的类文件</li>
+<li>#include&lt;header.h&gt; //表明header.h和当前文件不属于同一工程，是外部目录，一般是标准库<h5 id="头文件保护符（header-guard）"><a href="#头文件保护符（header-guard）" class="headerlink" title="头文件保护符（header guard）"></a>头文件保护符（header guard）</h5>就是为了在主文件中如果多次引用了某个头文件的话，第一次引用会把头文件拷贝进主文件，之后再引用，就不要再把头文件再拷贝过来一次。</li>
+</ul>
+<p><strong>/#define</strong> 指令把一个名字设置为预处理变量，另外两个指令则分别检查某个指定的预处理变量是否已经定义：<strong>#ifdef</strong> 当且仅当变量已定义时为真，<strong>#ifndef</strong> 当且仅当变量未定义时为真。一旦检查结果为真，则执行后续操作直至遇到<strong>#endif</strong>指令为止。这些功能就能有效地防止重复包含的发生：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta"># <span class="meta-keyword">ifndef</span> SALES_DATA_H <span class="comment">// 如果没有定义过SALES_DATA_H</span></span></span><br><span class="line"><span class="meta"># <span class="meta-keyword">define</span> SALES_DATA_H<span class="comment">// 那么定义SALES_DATA_H</span></span></span><br><span class="line"><span class="meta"># <span class="meta-keyword">include</span><span class="meta-string">&lt;string&gt;</span></span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Sales_data</span>&#123;</span></span><br><span class="line">	<span class="built_in">std</span>::<span class="built_in">string</span> bookNo;</span><br><span class="line">	<span class="keyword">unsigned</span> units_sold = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">double</span> revenue = <span class="number">0.0</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="meta"># <span class="meta-keyword">endif</span></span></span><br></pre></td></tr></table></figure>
+<p>后面如果再一次包含Sales_data.h,则#ifndef的检查结果将为假，编译器将会忽略#ifndef到#endif之间的部分。</p>
+
+        
+        <br />
+        <div id="comment-container">
+        </div>
+        <div id="disqus_thread"></div>
+
+        <div id="lv-container">
+        </div>
+
+    </div>
+</div>
+
+    </div>
+</div>
+
+
+<footer class="footer">
+    <ul class="list-inline text-center">
+        
+        
+
+        
+
+        
+
+        
+
+        
+
+    </ul>
+    
+    <p>
+        <span id="busuanzi_container_site_pv">
+            <span id="busuanzi_value_site_pv"></span>PV
+        </span>
+        <span id="busuanzi_container_site_uv">
+            <span id="busuanzi_value_site_uv"></span>UV
+        </span>
+        Created By <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>  Theme <a href="https://github.com/aircloud/hexo-theme-aircloud" target="_blank" rel="noopener">AirCloud</a></p>
+</footer>
+
+
+
+
+</body>
+
+<script>
+    // We expose some of the variables needed by the front end
+    window.hexo_search_path = "search.json"
+    window.hexo_root = "/"
+    window.isPost = true
+</script>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+
+<script src="/js/index.js"></script>
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+    <script>
+        /**
+         *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+         *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+        */
+        if( '' || '')
+        var disqus_config = function () {
+            this.page.url = '';  // Replace PAGE_URL with your page's canonical URL variable
+            this.page.identifier = ''; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+        };
+
+        (function() { // DON'T EDIT BELOW THIS LINE
+            var d = document, s = d.createElement('script');
+            s.src = 'https://pikache.disqus.com/embed.js';
+            s.setAttribute('data-timestamp', +new Date());
+            (d.head || d.body).appendChild(s);
+        })();
+    </script>
+
+
+
+</html>
