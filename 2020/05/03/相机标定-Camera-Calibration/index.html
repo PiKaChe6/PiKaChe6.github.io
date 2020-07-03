@@ -93,7 +93,7 @@
     </div>
     
         <div id="toc" class="toc-article">
-    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#为什么需要相机标定"><span class="toc-text">为什么需要相机标定</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#坐标系"><span class="toc-text">坐标系</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#四个坐标系之间的关系"><span class="toc-text">四个坐标系之间的关系</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#相机模型"><span class="toc-text">相机模型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#相机矩阵"><span class="toc-text">相机矩阵</span></a></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#相机模型"><span class="toc-text">相机模型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#为什么需要相机标定"><span class="toc-text">为什么需要相机标定</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#坐标系"><span class="toc-text">坐标系</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#四个坐标系之间的关系"><span class="toc-text">四个坐标系之间的关系</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#世界坐标系（3D）—-gt-相机坐标系（3D）"><span class="toc-text">世界坐标系（3D）—&gt;相机坐标系（3D）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#相机坐标系（3D）—-gt-理想图像坐标系（不考虑畸变）（2D）"><span class="toc-text">相机坐标系（3D）—&gt;理想图像坐标系（不考虑畸变）（2D）</span></a></li></ol></li></ol>
 </div>
     
 </div>
@@ -142,7 +142,15 @@
 </span>
     </div>
     <div class="post-content no-indent">
-        <h2 id="为什么需要相机标定"><a href="#为什么需要相机标定" class="headerlink" title="为什么需要相机标定"></a>为什么需要相机标定</h2><ul>
+        <h2 id="相机模型"><a href="#相机模型" class="headerlink" title="相机模型"></a>相机模型</h2><p>首先我们知道物体本身是不发光的，我们所看到的有颜色的物体都是都是物体反射太阳或其他光源基于大脑的色觉系统所产生的。而相机就是基于人类的色觉系统所制造成的。比如下图的我们眼中的绿巨人浩克，多条不同方向的光线在他身上反射后会被右侧相机的光学传感器所接收。<br><img src="Hulk.png" alt="Hulk"></p>
+<p>如果不对这些光线做处理，绿巨人身上的每一点都会作用于光学传感器上的每一个像素，产生如下图的效果。<br><img src="green.png" alt="green"></p>
+<p>很显然，这并不是我们想要的结果，所以人们就想到如果能把多余的反射光线遮住，使得实物上的每一点和相机上的每一个像素相对应，由此就得出来最简单的单孔相机（pinhole）模型，如下图所示。</p>
+<p><img src="pinhole.png" alt="pinhole"></p>
+<p>得到了简单的单孔模型之后，我们又引出了焦距（focus length）的概念，根据相似的定义可以知道焦距越小所得到图像也越小，而且是和实物上下颠倒。</p>
+<p><img src="focuslength.png" alt="focus length"></p>
+<p>因为单孔模型会遮掉很多多余的反射光线，使得光线的利用率不高，所以为了提高光线的利用率我们想到可以把带小孔的遮光板换成透镜，这样既可以提高光线的利用率，又可以满足我们之前的要求。</p>
+<p><img src="lens.png" alt="lens"></p>
+<h2 id="为什么需要相机标定"><a href="#为什么需要相机标定" class="headerlink" title="为什么需要相机标定"></a>为什么需要相机标定</h2><ul>
 <li>建立相机成像几何模型：通过拍摄得到的图片来重建3D现实，计算机视觉的首要任务就是要通过拍摄到的图像信息获取到物体在真实三维世界里相对应的信息，于是，建立物体从三维世界映射到相机成像平面这一过程中的几何模型就显得尤为重要，而这一过程最关键的部分就是要得到相机的内参和外参。</li>
 </ul>
 <ul>
@@ -161,16 +169,16 @@
 <h3 id="四个坐标系之间的关系"><a href="#四个坐标系之间的关系" class="headerlink" title="四个坐标系之间的关系"></a>四个坐标系之间的关系</h3><p><img src="coordinates.jpg" alt="coordinates"></p>
 <p>世界坐标系：Xw、Yw、Zw。相机坐标系： Xc、Yc、Zc。图像坐标系：x、y。像素坐标系：u、v。</p>
 <p>其中，相机坐标系的 轴与光轴重合，且垂直于图像坐标系平面并通过图像坐标系的原点，相机坐标系与图像坐标系之间的距离为焦距f（也即图像坐标系原点与焦点重合）。像素坐标系平面u-v和图像坐标系平面x-y重合，但像素坐标系原点位于图中左上角（之所以这么定义，目的是从存储信息的首地址开始读写）。</p>
-<h2 id="相机模型"><a href="#相机模型" class="headerlink" title="相机模型"></a>相机模型</h2><p>首先我们知道物体本身是不发光的，我们所看到的有颜色的物体都是都是物体反射太阳或其他光源基于大脑的色觉系统所产生的。而相机就是基于人类的色觉系统所制造成的。比如下图的我们眼中的绿巨人浩克，多条不同方向的光线在他身上反射后会被右侧相机的光学传感器所接收。<br><img src="Hulk.png" alt="Hulk"></p>
-<p>如果不对这些光线做处理，绿巨人身上的每一点都会作用于光学传感器上的每一个像素，产生如下图的效果。<br><img src="green.png" alt="green"></p>
-<p>很显然，这并不是我们想要的结果，所以人们就想到如果能把多余的反射光线遮住，使得实物上的每一点和相机上的每一个像素相对应，由此就得出来最简单的单孔相机（pinhole）模型，如下图所示。</p>
-<p><img src="pinhole.png" alt="pinhole"></p>
-<p>得到了简单的单孔模型之后，我们又引出了焦距（focus length）的概念，根据相似的定义可以知道焦距越小所得到图像也越小，而且是和实物上下颠倒。</p>
-<p><img src="focuslength.png" alt="focus length"></p>
-<p>因为单孔模型会遮掉很多多余的反射光线，使得光线的利用率不高，所以为了提高光线的利用率我们想到可以把带小孔的遮光板换成透镜，这样既可以提高光线的利用率，又可以满足我们之前的要求。</p>
-<p><img src="lens.png" alt="lens"></p>
+<p>而相机标定的过程就是：</p>
+<p><strong>世界坐标系—&gt;相机坐标系—&gt;图像坐标系—&gt;像素坐标系</strong><br>通过确定这些变换过程中的参数，就可以从照片上的像素坐标系的某一点推导出在现实世界中的该点对应点的坐标。</p>
 <hr>
-<h2 id="相机矩阵"><a href="#相机矩阵" class="headerlink" title="相机矩阵"></a>相机矩阵</h2>
+<h3 id="世界坐标系（3D）—-gt-相机坐标系（3D）"><a href="#世界坐标系（3D）—-gt-相机坐标系（3D）" class="headerlink" title="世界坐标系（3D）—&gt;相机坐标系（3D）"></a>世界坐标系（3D）—&gt;相机坐标系（3D）</h3><p><img src="ws2cs.png" alt="ws2cs"><br>相比于之前简单的单孔相机模型默认把世界坐标系和相机坐标系的等同重合在一起，世界坐标系的原点一般来说和相机坐标系的原点不会相同。</p>
+<p>刚体从世界坐标系转换到相机坐标系的过程，可以通过旋转和平移来得到，我们将其变换矩阵由一个旋转矩阵和平移向量组合成的齐次坐标矩阵（为什么要引入齐次坐标可见后续文章）来表示：</p>
+<hr>
+<h3 id="相机坐标系（3D）—-gt-理想图像坐标系（不考虑畸变）（2D）"><a href="#相机坐标系（3D）—-gt-理想图像坐标系（不考虑畸变）（2D）" class="headerlink" title="相机坐标系（3D）—&gt;理想图像坐标系（不考虑畸变）（2D）"></a>相机坐标系（3D）—&gt;理想图像坐标系（不考虑畸变）（2D）</h3><p><strong>首先假设相机坐标系的x，y轴与理想图像坐标系的x，y轴重合</strong>。那么如图所示，X是相机坐标系中的一点，坐标为（X，Y，Z）；x是理想图像坐标系上的一点，坐标为（x，y）<br><img src="pcs2ws.png" alt="pcs2ws"><br>根据相似定理可以得到(X, Y, Z)—&gt;(fX/Z， fY/Z)<br>x = PX<br>而转换成齐次坐标系进行运算，P就是一个3*4的矩阵。</p>
+<p><strong>但是现实中相机坐标系的x，y轴很可能与理想图像坐标系的x，y轴不重合</strong>。如图所示：<br><img src="pcs2ws2.png" alt="pcs2ws2"></p>
+<p>此时，就需要对P这个矩阵进行修改了。在矩阵P中添加px和py表示相机坐标系的原点和理想图像坐标系的原点的差距。</p>
+
         
         <br />
         <div id="comment-container">
