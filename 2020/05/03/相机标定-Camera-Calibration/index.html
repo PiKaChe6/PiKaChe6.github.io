@@ -93,7 +93,7 @@
     </div>
     
         <div id="toc" class="toc-article">
-    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#相机模型"><span class="toc-text">相机模型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#相机矩阵"><span class="toc-text">相机矩阵</span></a></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#为什么需要相机标定"><span class="toc-text">为什么需要相机标定</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#坐标系"><span class="toc-text">坐标系</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#四个坐标系之间的关系"><span class="toc-text">四个坐标系之间的关系</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#相机模型"><span class="toc-text">相机模型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#相机矩阵"><span class="toc-text">相机矩阵</span></a></li></ol>
 </div>
     
 </div>
@@ -142,7 +142,26 @@
 </span>
     </div>
     <div class="post-content no-indent">
-        <h2 id="相机模型"><a href="#相机模型" class="headerlink" title="相机模型"></a>相机模型</h2><p>首先我们知道物体本身是不发光的，我们所看到的有颜色的物体都是都是物体反射太阳或其他光源基于大脑的色觉系统所产生的。而相机就是基于人类的色觉系统所制造成的。比如下图的我们眼中的绿巨人浩克，多条不同方向的光线在他身上反射后会被右侧相机的光学传感器所接收。<br><img src="Hulk.png" alt="Hulk"></p>
+        <h2 id="为什么需要相机标定"><a href="#为什么需要相机标定" class="headerlink" title="为什么需要相机标定"></a>为什么需要相机标定</h2><ul>
+<li>建立相机成像几何模型：通过拍摄得到的图片来重建3D现实，计算机视觉的首要任务就是要通过拍摄到的图像信息获取到物体在真实三维世界里相对应的信息，于是，建立物体从三维世界映射到相机成像平面这一过程中的几何模型就显得尤为重要，而这一过程最关键的部分就是要得到相机的内参和外参。</li>
+</ul>
+<ul>
+<li>矫正透镜畸变：我们最开始接触到的成像方面的知识应该是有关小孔成像的，但是由于这种成像方式只有小孔部分能透过光线就会导致物体的成像亮度很低，于是聪明的人类发明了透镜。虽然亮度问题解决了，但是新的问题又来了：由于透镜的制造工艺，会使成像产生多种形式的畸变，于是为了去除畸变（使成像后的图像与真实世界的景象保持一致），人们计算并利用畸变系数来矫正这种像差。虽然理论上可以设计出不产生畸变的透镜，但其制造工艺相对于球面透镜会复杂很多，所以相对于复杂且高成本的制造工艺，人们更喜欢用数学来解决问题。<h2 id="坐标系"><a href="#坐标系" class="headerlink" title="坐标系"></a>坐标系</h2></li>
+<li><strong>世界坐标系(world coordinate system)</strong>：用户定义的三维世界的坐标系，为了描述目标物在真实世界里的位置而被引入。单位为m。</li>
+</ul>
+<ul>
+<li><strong>相机坐标系(camera coordinate system)</strong>：在相机上建立的坐标系，为了从相机的角度描述物体位置而定义，作为沟通世界坐标系和图像/像素坐标系的中间一环。单位为m。</li>
+</ul>
+<ul>
+<li><strong>图像坐标系(image coordinate system)</strong>：为了描述成像过程中物体从相机坐标系到图像坐标系的投影透射关系而引入，方便进一步得到像素坐标系下的坐标。 单位为m。</li>
+</ul>
+<ul>
+<li><strong>像素坐标系(pixel coordinate system)</strong>：为了描述物体成像后的像点在数字图像上（相片）的坐标而引入，是我们真正从相机内读取到的信息所在的坐标系。单位为个（像素数目）。</li>
+</ul>
+<h3 id="四个坐标系之间的关系"><a href="#四个坐标系之间的关系" class="headerlink" title="四个坐标系之间的关系"></a>四个坐标系之间的关系</h3><p><img src="coordinats.jpg" alt="coordinats"></p>
+<p>世界坐标系：Xw、Yw、Zw。相机坐标系： Xc、Yc、Zc。图像坐标系：x、y。像素坐标系：u、v。</p>
+<p>其中，相机坐标系的 轴与光轴重合，且垂直于图像坐标系平面并通过图像坐标系的原点，相机坐标系与图像坐标系之间的距离为焦距f（也即图像坐标系原点与焦点重合）。像素坐标系平面u-v和图像坐标系平面x-y重合，但像素坐标系原点位于图中左上角（之所以这么定义，目的是从存储信息的首地址开始读写）。</p>
+<h2 id="相机模型"><a href="#相机模型" class="headerlink" title="相机模型"></a>相机模型</h2><p>首先我们知道物体本身是不发光的，我们所看到的有颜色的物体都是都是物体反射太阳或其他光源基于大脑的色觉系统所产生的。而相机就是基于人类的色觉系统所制造成的。比如下图的我们眼中的绿巨人浩克，多条不同方向的光线在他身上反射后会被右侧相机的光学传感器所接收。<br><img src="Hulk.png" alt="Hulk"></p>
 <p>如果不对这些光线做处理，绿巨人身上的每一点都会作用于光学传感器上的每一个像素，产生如下图的效果。<br><img src="green.png" alt="green"></p>
 <p>很显然，这并不是我们想要的结果，所以人们就想到如果能把多余的反射光线遮住，使得实物上的每一点和相机上的每一个像素相对应，由此就得出来最简单的单孔相机（pinhole）模型，如下图所示。</p>
 <p><img src="pinhole.png" alt="pinhole"></p>
