@@ -93,7 +93,7 @@
     </div>
     
         <div id="toc" class="toc-article">
-    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#相机模型"><span class="toc-text">相机模型</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#为什么需要相机标定"><span class="toc-text">为什么需要相机标定</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#坐标系"><span class="toc-text">坐标系</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#四个坐标系之间的关系"><span class="toc-text">四个坐标系之间的关系</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#世界坐标系（3D）—-gt-相机坐标系（3D）"><span class="toc-text">世界坐标系（3D）—&gt;相机坐标系（3D）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#相机坐标系（3D）—-gt-理想图像坐标系（不考虑畸变）（2D）"><span class="toc-text">相机坐标系（3D）—&gt;理想图像坐标系（不考虑畸变）（2D）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#理想图像坐标系—-gt-实际图像坐标系（考虑畸变）"><span class="toc-text">理想图像坐标系—&gt;实际图像坐标系（考虑畸变）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#图像坐标系-2D-—-gt-像素坐标系-2D"><span class="toc-text">图像坐标系(2D)—&gt;像素坐标系(2D)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#综合"><span class="toc-text">综合</span></a></li></ol></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#相机模型"><span class="toc-text">相机模型</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#为什么需要相机标定"><span class="toc-text">为什么需要相机标定</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#坐标系"><span class="toc-text">坐标系</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#四个坐标系之间的关系"><span class="toc-text">四个坐标系之间的关系</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#世界坐标系（3D）—-gt-相机坐标系（3D）"><span class="toc-text">世界坐标系（3D）—&gt;相机坐标系（3D）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#相机坐标系（3D）—-gt-理想图像坐标系（不考虑畸变）（2D）"><span class="toc-text">相机坐标系（3D）—&gt;理想图像坐标系（不考虑畸变）（2D）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#理想图像坐标系—-gt-实际图像坐标系（考虑畸变）"><span class="toc-text">理想图像坐标系—&gt;实际图像坐标系（考虑畸变）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#图像坐标系-2D-—-gt-像素坐标系-2D"><span class="toc-text">图像坐标系(2D)—&gt;像素坐标系(2D)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#综合"><span class="toc-text">综合</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#标定方法"><span class="toc-text">标定方法</span></a></li></ol>
 </div>
     
 </div>
@@ -197,6 +197,14 @@
 <p>所以通过5个参数来描述由图像坐标系转化到像素坐标系的过程。这5个参数被称为<strong>内参（Instrnsic Camara Parameters）。</strong><br><img src="iP.jpg" alt="iP"></p>
 <hr>
 <h2 id="综合"><a href="#综合" class="headerlink" title="综合"></a>综合</h2><p>把上述的外参，投影和内参综合起来，就可以得到从世界坐标系到像素坐标系的过程<br><img src="mapping.jpg" alt="mapping"></p>
+<h1 id="标定方法"><a href="#标定方法" class="headerlink" title="标定方法"></a>标定方法</h1><ul>
+<li>传统相机标定</li>
+</ul>
+<p>最简单的相机标定为线性标定，即不考虑相机的畸变而只考虑空间坐标转换。<br>每个坐标点有X,Y两个变量，可列两个方程，相机内参有5个未知数，外参平移和旋转各3个，共有11个变量，因此至少需要6个特征点来求解。</p>
+<ul>
+<li>非线性标定</li>
+</ul>
+<p>当镜头畸变明显时必须考虑畸变，一般较为便宜的网络摄像头畸变特别大，而价格较贵的工业摄像头则畸变很小，因为其中已经嵌入了许多消除畸变的程序。这时线性模型转化为非线性模型，需要通过非线性标定方法求解。有最速下降法，遗传算法，高斯牛顿法和神经网络算法等。</p>
 
         
         <br />
