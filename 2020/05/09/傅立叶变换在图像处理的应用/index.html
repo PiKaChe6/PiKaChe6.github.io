@@ -60,32 +60,32 @@
             <li >
                 <a href="/">
                     <i class="iconfont icon-shouye1"></i>
-                    <span>主页</span>
+                    <span>HOME</span>
                 </a>
             </li>
             <li >
                 <a href="/tags">
                     <i class="iconfont icon-biaoqian1"></i>
-                    <span>标签</span>
+                    <span>TAGS</span>
                 </a>
             </li>
             <li >
                 <a href="/archives">
                     <i class="iconfont icon-guidang2"></i>
-                    <span>存档</span>
+                    <span>ARCHIVES</span>
                 </a>
             </li>
             <li >
                 <a href="/about/">
                     <i class="iconfont icon-guanyu2"></i>
-                    <span>关于</span>
+                    <span>ABOUT</span>
                 </a>
             </li>
             
             <li>
                 <a id="search">
                     <i class="iconfont icon-sousuo1"></i>
-                    <span>搜索</span>
+                    <span>SEARCH</span>
                 </a>
             </li>
             
@@ -104,7 +104,7 @@
         <div class="search-input">
             <span id="esc-search"> <i class="icon-fanhui iconfont"></i></span>
             <input id="search-input"/>
-            <span id="begin-search">搜索</span>
+            <span id="begin-search">search</span>
         </div>
         <div class="search-result-container" id="search-result-container">
 
@@ -128,16 +128,16 @@
     </div>
 
     <div class="post-meta">
-        <span class="attr">发布于：<span>2020-05-09 14:14:48</span></span>
+        <span class="attr">Post：<span>2020-05-09 14:14:48</span></span>
         
-        <span class="attr">标签：/
+        <span class="attr">Tags：/
         
         <a class="tag" href="/tags/#图像处理" title="图像处理">图像处理</a>
         <span>/</span>
         
         
         </span>
-        <span class="attr">访问：<span id="busuanzi_value_page_pv"></span>
+        <span class="attr">Visit：<span id="busuanzi_value_page_pv"></span>
 </span>
 </span>
     </div>
@@ -187,7 +187,7 @@
 </li>
 </ul>
 <h3 id="二维图像中傅立叶变换的原理"><a href="#二维图像中傅立叶变换的原理" class="headerlink" title="二维图像中傅立叶变换的原理"></a>二维图像中傅立叶变换的原理</h3><p>二维的sin波动可以用如下公式表述：<br><em>z = a sin(ux+vy)</em><br>z是波的高度（强度）。<br>a是幅值，表示波的最高高度。<br>u是波浪在x方向上重复的次数（x方向上的频率）。<br>v是波浪在y方向上重复的次数（y方向上的频率）。<br>如图所示，当v=0的时候，sin的波只在x轴方向波动，当u=0的时候，sin的波只在y轴方向波动，如果u和v都不为0，那么就会在xy叠加方向以角度u/v波动（比如对角线方向）。<br><img src="waves.png" alt="waves"><br>如下图，把每个像素点上述的波叠加起来，然后这些波会相互抵消，相互叠加。<br><img src="waves2.png" alt="waves_overlay"><br>u是波浪在x方向上重复的次数（x方向上的频率），它可以是1，2，3…     1表示单位距离内在x方向上重复1次，2表示单位距离内在x方向上重复2次…<br>比如，f（2，2）这个像素，它的灰度值在x方向上以sin波波动了3次，在y方向上以sin波波动了4次，那么它在频率域对于点F（3，4）就有一点贡献。F（u，v）的值就是这张图内所有像素点贡献值之和，就是在那个x方向u频率和y方向的v频率的sin波动的强度大小的矢量和。F(3，4)那点的亮度就是表示了整张图的所有像素点在x方向上以频率3灰度的波动和在y方向上以频率4灰度的波动之和的强度（能量大小）。在频率域上的中心点（0，0）表示在x和y方向上都没有波动，它的值是所有灰度值和的平均值。所以在频率域中，中间是低频率，外部是高频率。</p>
-<h3 id="傅立叶变换如何储存变换前的位置信息"><a href="#傅立叶变换如何储存变换前的位置信息" class="headerlink" title="傅立叶变换如何储存变换前的位置信息"></a>傅立叶变换如何储存变换前的位置信息</h3><p>按照之前介绍的，如果在傅立叶变换之后是频率域，而频率域只有幅值的话，那么就只能用幅值来表示在变换前以各种角度的各种频率出现次数的多少。但是在图片中很可能还需要这些偏移信息，而这些信息就储存在频率域的相位谱信息中，每个频率都有自己的幅值和相位。<br><img src="phase.png" alt="phase"></p>
+<h3 id="傅立叶变换如何储存变换前的位置信息"><a href="#傅立叶变换如何储存变换前的位置信息" class="headerlink" title="傅立叶变换如何储存变换前的位置信息"></a>傅立叶变换如何储存变换前的位置信息</h3><p>按照之前介绍的，如果在傅立叶变换之后是频率域，而频率域只有幅值的话，那么就只能用幅值来表示在变换前以各种角度的各种频率出现次数的多少。但是在图片中很可能还需要这些偏移信息，而这些信息就储存在频率域的相位谱信息中，每个频率都有自己的幅值和相位。<br><img src="phase.png" alt="phase"><br>频率域是由magnitude和phase组成，phase主要储存了图像傅立叶变换前的基础结构的信息<br><img src="phase2.png" alt="phase2"></p>
 <h3 id="小例子"><a href="#小例子" class="headerlink" title="小例子"></a>小例子</h3><p><img src="example.png" alt="example"><br>为什么在频率域上的水平直线转化到空间域是清晰的竖直的直线呢？<br>因为在频率域上的水平直线表示着当u（u是波浪在x方向上重复的次数（x方向上的频率））等于很多值（1，2，3…）时，v（v是波浪在y方向上重复的次数（y方向上的频率））等都于0，这意味着在空间域上灰度值在x方向上有很多各种各样的灰度值的变化，因为直线是有粗度的，粗度上的每个pixel都是一个频率，而高频的代表了是一条清晰的直线（直线的清晰度）。<br><img src="example2.png" alt="example2"></p>
 <h3 id="傅立叶变换在图像处理的应用"><a href="#傅立叶变换在图像处理的应用" class="headerlink" title="傅立叶变换在图像处理的应用"></a>傅立叶变换在图像处理的应用</h3><ol>
 <li>图像去噪，利用傅立叶变换的线形性质, 在傅立叶变换后在频率域更方便用某些filter去去噪。</li>
