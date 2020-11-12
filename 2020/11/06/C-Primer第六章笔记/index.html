@@ -505,7 +505,7 @@
 <h3 id="constexpr函数"><a href="#constexpr函数" class="headerlink" title="constexpr函数"></a>constexpr函数</h3><p>用于常量表达式（值不会改变并且在编译过程就能得到计算结果的表达式）的函数</p>
 <ul>
 <li>函数的返回类型以及所有形参的类型都得是<strong>字面值类型</strong>（算数类型、引用和指针都属于字面值类型。自定义类、IO库、string类型则不属于字面周类型）</li>
-<li>函数体中必须有且只有一条return语句</li>
+<li>函数体中必须有且只有一条return语句（<code>constexpr</code> 函数只能包含 <code>return</code> 语句，不允许执行其他任务。）</li>
 </ul>
 <h3 id="调试帮助"><a href="#调试帮助" class="headerlink" title="调试帮助"></a>调试帮助</h3><p>程序可以包含一些用于<strong>调试</strong>的代码，但是这些代码只在开发程序时使用。当应用程序编写完成准备发布时，要先屏蔽掉这些调试代码。</p>
 <ul>
