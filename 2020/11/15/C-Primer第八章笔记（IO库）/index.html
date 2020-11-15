@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="郭宇祥的博客">
+    <meta name="keyword"  content="">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>
+        
+        C++Primer第八章笔记（IO库） - PiKaChe&#39;s Blog
+        
+    </title>
+
+    <!-- Custom CSS -->
+    
+<link rel="stylesheet" href="/css/aircloud.css">
+
+    
+<link rel="stylesheet" href="/css/gitment.css">
+
+    <!--<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">-->
+    <link href="//at.alicdn.com/t/font_620856_pl6z7sid89qkt9.css" rel="stylesheet" type="text/css">
+    <!-- ga & ba script hoook -->
+    <script></script>
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body>
+
+<div class="site-nav-toggle" id="site-nav-toggle">
+    <button>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+    </button>
+</div>
+
+<div class="index-about">
+    <i> 总得留下些什么吧 </i>
+</div>
+
+<div class="index-container">
+    
+    <div class="index-left">
+        
+<div class="nav" id="nav">
+    <div class="avatar-name">
+        <div class="avatar ">
+            <img src="/img/avatar.jpg" />
+        </div>
+        <div class="name">
+            <i>皮卡车</i>
+        </div>
+    </div>
+    <div class="contents" id="nav-content">
+        <ul>
+            <li >
+                <a href="/">
+                    <i class="iconfont icon-shouye1"></i>
+                    <span>HOME</span>
+                </a>
+            </li>
+            <li >
+                <a href="/tags">
+                    <i class="iconfont icon-biaoqian1"></i>
+                    <span>TAGS</span>
+                </a>
+            </li>
+            <li >
+                <a href="/archives">
+                    <i class="iconfont icon-guidang2"></i>
+                    <span>ARCHIVES</span>
+                </a>
+            </li>
+            <li >
+                <a href="/about/">
+                    <i class="iconfont icon-guanyu2"></i>
+                    <span>ABOUT</span>
+                </a>
+            </li>
+            
+            <li>
+                <a id="search">
+                    <i class="iconfont icon-sousuo1"></i>
+                    <span>SEARCH</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    
+        <div id="toc" class="toc-article">
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#IO库"><span class="toc-text">IO库</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#IO类"><span class="toc-text">IO类</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#IO对象无拷贝或赋值"><span class="toc-text">IO对象无拷贝或赋值</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#条件状态"><span class="toc-text">条件状态</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#管理输出缓冲"><span class="toc-text">管理输出缓冲</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#文件输入输出"><span class="toc-text">文件输入输出</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#使用-文件流-对象"><span class="toc-text">使用 文件流 对象</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#用fstream代替iostream-amp"><span class="toc-text">用fstream代替iostream&amp;</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#成员函数open和close"><span class="toc-text">成员函数open和close</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#看看ifstream的作用原理"><span class="toc-text">看看ifstream的作用原理</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#文件格式"><span class="toc-text">文件格式</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#以out模式打开文件会丢失已有数据"><span class="toc-text">以out模式打开文件会丢失已有数据</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#string流"><span class="toc-text">string流</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#使用istringstream-主要作用就是把一行string分成单个单词进行输出-保存"><span class="toc-text">使用istringstream(主要作用就是把一行string分成单个单词进行输出&#x2F;保存)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#使用ostringstream"><span class="toc-text">使用ostringstream</span></a></li></ol></li></ol></li></ol>
+</div>
+    
+</div>
+
+
+<div class="search-field" id="search-field">
+    <div class="search-container">
+        <div class="search-input">
+            <span id="esc-search"> <i class="icon-fanhui iconfont"></i></span>
+            <input id="search-input"/>
+            <span id="begin-search">search</span>
+        </div>
+        <div class="search-result-container" id="search-result-container">
+
+        </div>
+    </div>
+</div>
+
+        <div class="index-about-mobile">
+            <i> 总得留下些什么吧 </i>
+        </div>
+    </div>
+    
+    <div class="index-middle">
+        <!-- Main Content -->
+        
+
+
+<div class="post-container">
+    <div class="post-title">
+        C++Primer第八章笔记（IO库）
+    </div>
+
+    <div class="post-meta">
+        <span class="attr">Post：<span>2020-11-15 18:14:35</span></span>
+        
+        <span class="attr">Tags：/
+        
+        <a class="tag" href="/tags/#-C++" title="-C++">-C++</a>
+        <span>/</span>
+        
+        
+        </span>
+        <span class="attr">Visit：<span id="busuanzi_value_page_pv"></span>
+</span>
+</span>
+    </div>
+    <div class="post-content no-indent">
+        <h1 id="IO库"><a href="#IO库" class="headerlink" title="IO库"></a>IO库</h1><ul>
+<li>istream(输入流)类型，提供输入操作。</li>
+<li>ostream（输出流）类型，提供输出操作。</li>
+<li>cin，一个istream【对象】，从标准输入读取数据</li>
+<li>cout，一个ostream【对象】，向标准输出写入数据</li>
+<li>cerr，一个ostream【对象】，通常用于输出程序错误消息，写入到标准错误。</li>
+<li>&gt;&gt;运算符，用来从istream对象读取输入数据</li>
+<li>&lt;&lt;运算符，用来向一个ostream对象写入输出数据</li>
+<li>getline函数，从一个给定的istream读取一行数据，存入一个给定的string对象中。</li>
+</ul>
+<h2 id="IO类"><a href="#IO类" class="headerlink" title="IO类"></a>IO类</h2><table>
+<thead>
+<tr>
+<th align="left">头文件</th>
+<th align="center">类型</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">iostream</td>
+<td align="center">istream, wistream 从流读取数据</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="center">ostream, wostream 向流写入数据</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="center">iostream，wiostream 读写流</td>
+</tr>
+<tr>
+<td align="left">fstream</td>
+<td align="center">ifstream, wifstream 从文件读取数据</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="center">ofstream, wofstream 向文件写入数据</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="center">fstream，wfstream 读写文件</td>
+</tr>
+<tr>
+<td align="left">sstream</td>
+<td align="center">istringstream, wistringstream 从string读取数据</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="center">ostringstream, wostringstream 向string写入数据</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="center">stringstream，wstringstream 读写string</td>
+</tr>
+</tbody></table>
+<p>宽字符版本的IO类型和函数的名字以 <code>w</code> 开始，如 <code>wcin</code>、<code>wcout</code> 和 <code>wcerr</code> 分别对应 <code>cin</code>、<code>cout</code>和<code>cerr</code>。它们与其对应的普通 <code>char</code> 版本都定义在同一个头文件中，如头文件 <em>fstream</em> 定义了 <code>ifstream</code> 和 <code>wifstream</code> 类型。</p>
+<p>通常可以将一个派生类（继承类）对象当作其基类（所继承的类）对象来使用，这是通过 继承机制（inheritance） 实现的。</p>
+<h3 id="IO对象无拷贝或赋值"><a href="#IO对象无拷贝或赋值" class="headerlink" title="IO对象无拷贝或赋值"></a>IO对象无拷贝或赋值</h3><p>【不能拷贝或对IO对象赋值】。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">ofstream out1, out2;</span><br><span class="line">out1 = out2;    			<span class="comment">// 错误：不能对流对象赋值</span></span><br><span class="line"><span class="function">ofstream <span class="title">print</span><span class="params">(ofstream)</span></span>;   <span class="comment">// 错误：不能初始化ofstream参数</span></span><br><span class="line">out2 = <span class="built_in">print</span>(out2);     	<span class="comment">// 错误：不能拷贝流对象</span></span><br></pre></td></tr></table></figure>
+
+<p>由于IO对象不能拷贝，因此不能将函数形参或返回类型定义为流类型。进行IO操作的函数通常以【引用方式】传递和返回流。读写一个IO对象会改变其状态，因此传递和返回的【引用不能是 const 的】。</p>
+<h4 id="条件状态"><a href="#条件状态" class="headerlink" title="条件状态"></a>条件状态</h4><p>IO操作一个与生俱来的问题是可能发生错误。一些错误是可恢复的，而其他错误则发生在系统深处，已经超出了应用程序可以修正的范围。</p>
+<p>IO库条件状态：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> ival;</span><br><span class="line"><span class="built_in">cin</span> &gt;&gt; ival;</span><br><span class="line"></span><br><span class="line"><span class="comment">//如果输入Boo，读取操作就会产生错误。因为期待读入一个int，却得到了一个字符B。</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//最简单的优化方法是将它当作一个条件来使用</span></span><br><span class="line"><span class="keyword">while</span> (<span class="built_in">cin</span> &gt;&gt; <span class="keyword">word</span>)</span><br><span class="line">  <span class="comment">//ok:读取操作成功</span></span><br></pre></td></tr></table></figure>
+
+<p><code>badbit</code> 表示系统级错误，如不可恢复的读写错误。通常情况下，一旦 <code>badbit</code> 被置位，流就无法继续使用了。在发生可恢复错误后，<code>failbit</code> 会被置位，如期望读取数值却读出一个字符。如果到达文件结束位置，<code>eofbit</code> 和 <code>failbit</code> 都会被置位。如果流未发生错误，则 <code>goodbit</code> 的值为0。如果 <code>badbit</code>、<code>failbit</code> 和 <code>eofbit</code> 任何一个被置位，检测流状态的条件都会失败。</p>
+<p><code>good</code> 函数在所有错误均未置位时返回 <code>true</code>。而 <code>bad</code>、<code>fail</code> 和 <code>eof</code> 函数在对应错误位被置位时返回 <code>true</code>。此外，在 <code>badbit</code> 被置位时，<code>fail</code> 函数也会返回 <code>true</code>。因此应该使用 <code>good</code> 或 <code>fail</code> 函数确定流的总体状态，<code>eof</code> 和 <code>bad</code> 只能检测特定错误。</p>
+<p>【流对象（cin）】的 <code>rdstate</code> 成员返回一个 <code>iostate</code> 值，表示流的当前状态。<code>setstate</code> 成员用于将指定条件置位（叠加原始流状态）。<code>clear</code> 成员的无参版本清除所有错误标志；含参版本接受一个 <code>iostate</code> 值，用于设置流的新状态（覆盖原始流状态）。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 记住cin的当前状态</span></span><br><span class="line"><span class="keyword">auto</span> old_state = <span class="built_in">cin</span>.rdstate();     <span class="comment">// 记住cin的当前状态</span></span><br><span class="line"><span class="built_in">cin</span>.<span class="built_in">clear</span>();    			<span class="comment">// 使cin有效</span></span><br><span class="line">process_input(<span class="built_in">cin</span>);     	<span class="comment">// 使用cin</span></span><br><span class="line"><span class="built_in">cin</span>.setstate(old_state);    <span class="comment">// 将cin置为原有状态</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="管理输出缓冲"><a href="#管理输出缓冲" class="headerlink" title="管理输出缓冲"></a>管理输出缓冲</h3><p>每个输出流都管理一个【缓冲区】，用于保存程序读写的数据。</p>
+<p>导致缓冲刷新（即数据真正写入输出设备或文件）的原因有很多：</p>
+<ul>
+<li>程序正常结束。</li>
+<li>缓冲区已满。</li>
+<li>使用操纵符（如 <code>endl</code>）显式刷新缓冲区。</li>
+<li>在每个输出操作之后，可以用 <code>unitbuf</code> 操纵符设置流的内部状态，从而清空缓冲区。默认情况下，对 <code>cerr</code> 是设置 <code>unitbuf</code> 的，因此写到 <code>cerr</code> 的内容都是立即刷新的。</li>
+<li>一个输出流可以被关联到另一个流。这种情况下，当读写被关联的流时，关联到的流的缓冲区会被刷新。默认情况下，<code>cin</code> 和 <code>cerr</code> 都关联到 <code>cout</code>，因此，读 <code>cin</code> 或写 <code>cerr</code> 都会刷新 <code>cout</code> 的缓冲区。</li>
+</ul>
+<p><code>flush</code> 操纵符刷新缓冲区，但不输出任何额外字符。<code>ends</code> 向缓冲区插入一个空字符，然后刷新缓冲区。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cout</span> &lt;&lt; <span class="string">"hi!"</span> &lt;&lt; <span class="built_in">endl</span>;   <span class="comment">// 输出hi和一个换行，然后刷新缓冲区</span></span><br><span class="line"><span class="built_in">cout</span> &lt;&lt; <span class="string">"hi!"</span> &lt;&lt; <span class="built_in">flush</span>;  <span class="comment">// 输出hi，然后刷新缓冲区，不附加任何额外字符</span></span><br><span class="line"><span class="built_in">cout</span> &lt;&lt; <span class="string">"hi!"</span> &lt;&lt; ends;   <span class="comment">// 输出hi和一个空字符，然后刷新缓冲区</span></span><br><span class="line"><span class="number">123</span></span><br></pre></td></tr></table></figure>
+
+<p>如果想在每次输出操作后都刷新缓冲区，可以使用 <code>unitbuf</code> 操纵符。它令流在接下来的每次写操作后都进行一次 <code>flush</code> 操作。而 <code>nounitbuf</code> 操纵符则使流恢复使用正常的缓冲区刷新机制。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cout</span> &lt;&lt; unitbuf;    <span class="comment">// 所有输出操作后都会立即刷新缓冲区</span></span><br><span class="line"><span class="comment">// 任何输出都立即刷新，无缓冲</span></span><br><span class="line"><span class="built_in">cout</span> &lt;&lt; nounitbuf;  <span class="comment">// 回到正常的缓冲方式</span></span><br><span class="line"><span class="number">123</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>如果程序异常终止，输出缓冲区是不会被刷新的。当一个程序崩溃后， 它所输出的数据很可能停留在输出缓冲区中等待打印。<br> <br>当调试一个已经崩溃的程序时，需要确认那些你认为已经输出的数据确实已经刷新了。否则， 可能将大量时间浪费在追踪代码为什么没有执行上，而实际上代码已经执行了，只是程序崩溃后缓冲区没有被刷新，输出数据被挂起没有打印而已。</p>
+</blockquote>
+<p>当一个输入流被关联到一个输出流时，任何试图从输入流读取数据的操作都会先刷新关联的输出流。标准库将<code>cout</code>和<code>cin</code>关联在一起，因此下面的语句会导致<code>cout</code>的缓冲区被刷新：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cin</span> &gt;&gt; ival;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>关联输入流和输出流的作用：交互式系统通常应该关联输入流和输出流。这意味着包括用户提示信息在内的所有输出，都会在读操作之前被打印出来。</p>
+</blockquote>
+<p>使用 <code>tie</code> 函数可以关联两个流。它有两个重载版本：</p>
+<ul>
+<li>无参版本返回指向输出流的指针。如果本对象已关联到一个输出流，则返回的就是指向这个流的指针，否则返回空指针。</li>
+<li><code>tie</code> 的第二个版本接受一个指向 <code>ostream</code> 的指针，将本对象关联到此 <code>ostream</code>。<code>x.tie(&amp;o)</code>将流x关联到输出流o.</li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cin</span>.tie(&amp;<span class="built_in">cout</span>);     <span class="comment">// 仅仅是用来展示：标准库将cin和cout关联在一起</span></span><br><span class="line"><span class="comment">// old_tie指向当前关联到cin的流（如果有的话）</span></span><br><span class="line">ostream *old_tie = <span class="built_in">cin</span>.tie(<span class="literal">nullptr</span>); <span class="comment">// cin不再与其他流关联</span></span><br><span class="line"><span class="comment">// 将cin与cerr关联；这不是一个好主意，因为cin应该关联到cout</span></span><br><span class="line"><span class="built_in">cin</span>.tie(&amp;<span class="built_in">cerr</span>);     <span class="comment">// 读取cin会刷新 cerr而不是cout</span></span><br><span class="line"><span class="built_in">cin</span>.tie(old_tie);   <span class="comment">// 重建cin和cout间的正常关联</span></span><br></pre></td></tr></table></figure>
+
+<p>每个流同时最多关联一个流，但多个流可以同时关联同一个 <code>ostream</code>。向 <code>tie</code> 传递空指针可以解开流的关联。</p>
+<h2 id="文件输入输出"><a href="#文件输入输出" class="headerlink" title="文件输入输出"></a>文件输入输出</h2><p>头文件 <em>fstream</em> 定义了三个类型来支持文件IO：<code>ifstream</code> 从给定文件读取数据，<code>ofstream</code> 向指定文件写入数据，<code>fstream</code> 可以同时读写指定文件。</p>
+<table>
+<thead>
+<tr>
+<th align="left">代码</th>
+<th align="center">含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">fstream fstrm;</td>
+<td align="center">创建未绑定的文件流。fstream是头文件fstream中定义的一个类型</td>
+</tr>
+<tr>
+<td align="left">fstream fstrm(s);</td>
+<td align="center">创建一个fstream,并打开名为s的文件。s可以是string类型，或者是c风格字符串的指针。这些构造函数都是explicit的。默认的文件模式mode依赖于fstream的类型</td>
+</tr>
+<tr>
+<td align="left">fstream fstrm(s, mode);</td>
+<td align="center">与前一个构造函数类似，但按指定mode打开文件</td>
+</tr>
+<tr>
+<td align="left">fstrm.open(s)</td>
+<td align="center">打开名为s的文件，并将文件与fstrm绑定。s可以是一个string或者一个指向c风格字符串的指针。默认的文件mode依赖于fstream的类型。返回void</td>
+</tr>
+<tr>
+<td align="left">fstrm.close()</td>
+<td align="center">关闭与fstrm绑定的文件。返回void</td>
+</tr>
+<tr>
+<td align="left">fstrm.is_open()</td>
+<td align="center">返回一个bool值，指出与fstrm关联的文件是否成功打开且尚未关闭</td>
+</tr>
+</tbody></table>
+<h3 id="使用-文件流-对象"><a href="#使用-文件流-对象" class="headerlink" title="使用 文件流 对象"></a>使用 文件流 对象</h3><p>当我们想要读写一个文件时，可以定义一个文件流对象，并将文件与对象关联起来。每个文件流类型都定义了<code>open</code>函数，它完成一些系统操作，定位指定文件，并视情况打开为读或写模式。</p>
+<p>创建文件流对象时，如果提供了文件名（可选），<code>open</code> 会被自动调用。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">ifstream <span class="title">in</span><span class="params">(ifile)</span></span>;   	<span class="comment">// 定义了一个【输入流】in对象，它被初始化为从文件读取数据，文件名由string类型的参数ifile指定。</span></span><br><span class="line">ofstream out;   		<span class="comment">// 定义了输出流out，输出文件流未关联到任何文件</span></span><br></pre></td></tr></table></figure>
+
+<p>在C++11中，文件流对象的文件名可以是 <code>string</code> 对象或C风格字符数组。旧版本的标准库只支持C风格字符数组。</p>
+<h4 id="用fstream代替iostream-amp"><a href="#用fstream代替iostream-amp" class="headerlink" title="用fstream代替iostream&amp;"></a>用fstream代替iostream&amp;</h4><p>在要求使用基类对象的地方，可以用继承类型的对象代替。因此一个接受 <code>iostream</code> 类型引用或指针参数的函数，可以用对应的 <code>fstream</code> 类型来调用。如果有一个函数接受了一个ostream&amp;参数，我们在调用这个函数时，可以传递给它一个ofstream对象。</p>
+<h4 id="成员函数open和close"><a href="#成员函数open和close" class="headerlink" title="成员函数open和close"></a>成员函数open和close</h4><p>可以先定义空文件流对象，再调用 <code>open</code> 函数将其与指定文件关联。如果 <code>open</code> 调用失败，<code>failbit</code> 会被置位。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">ifstream <span class="title">in</span><span class="params">(ifile)</span></span>;			<span class="comment">//构筑一个ifstream并打开给定文件</span></span><br><span class="line">ofstream out;						<span class="comment">//输出文件流未与任何文件相关联</span></span><br><span class="line">out.<span class="built_in">open</span>(ifile + <span class="string">".copy"</span>);		<span class="comment">//打开指定文件</span></span><br><span class="line"><span class="keyword">if</span>(out)				<span class="comment">//检查open是否成功，如果open失败，条件为假</span></span><br><span class="line">  						<span class="comment">//open成功，我们可以使用文件了</span></span><br></pre></td></tr></table></figure>
+
+
+
+<p>一旦一个文件流已经打开，它就保持与对应文件的关联。对一个已经打开的文件流调用 <code>open</code> 会失败，并导致 <code>failbit</code> 被置位。随后试图使用文件流的操作都会失败。如果想将文件流关联到另一个文件，必须先调用 <code>close</code> 关闭当前文件，再调用 <code>clear</code> 重置流的条件状态（<code>close</code> 不会重置流的条件状态）。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">in.<span class="built_in">close</span>();  <span class="comment">//关闭文件</span></span><br><span class="line">in.<span class="built_in">open</span>(iflie + <span class="string">"2"</span>);	<span class="comment">//打开另一个文件</span></span><br></pre></td></tr></table></figure>
+
+<p>如果open成功，则open会设置流的状态，使得good（）为true。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">auto</span> p = argv + <span class="number">1</span>; p != argv + argc; ++p)&#123;</span><br><span class="line">  <span class="function">ifstream <span class="title">input</span><span class="params">(*p)</span></span>;	<span class="comment">//创建输出流并打开文件</span></span><br><span class="line">  <span class="keyword">if</span> (input)&#123;				<span class="comment">//如果文件打开成功，“处理”此文件</span></span><br><span class="line">    progress(input);</span><br><span class="line">  &#125;<span class="keyword">else</span></span><br><span class="line">    <span class="built_in">cerr</span> &lt;&lt; <span class="string">"coulden't open: "</span> + <span class="built_in">string</span>(*p);</span><br><span class="line">&#125;<span class="comment">// 每个循环步input（因为input是while循环的局部变量）都会离开作用域，因此会被销毁</span></span><br></pre></td></tr></table></figure>
+
+
+
+<blockquote>
+<p>当 <code>fstream</code> 对象被销毁时，<code>close</code> 会自动被调用。</p>
+</blockquote>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 编写函数，以读模式打开一个文件，将其内容读入到一个string的vector中，将每一行作为一个独立的元素存于vector中</span></span><br><span class="line"><span class="meta"># <span class="meta-keyword">include</span><span class="meta-string">&lt;fstream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="built_in">std</span>::ifstream;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">  <span class="function">ifstream <span class="title">in</span><span class="params">(<span class="string">"/Users/jhyouergen/Desktop/test.md"</span>)</span></span>;</span><br><span class="line">  <span class="built_in">vector</span>&lt;<span class="built_in">string</span>&gt;v1;</span><br><span class="line">  <span class="built_in">string</span> s;</span><br><span class="line">  <span class="comment">//如果想要保留空格（空白符）读取，就要用getline()，getline只要一遇到换行符就结束读取操作并返回结果。</span></span><br><span class="line">	<span class="keyword">while</span>(getline(in, s))</span><br><span class="line">    v1.push_back(s);</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">auto</span> i: v1)&#123;</span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt;i&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//将每个单词作为一个独立元素进行储存</span></span><br><span class="line"><span class="keyword">while</span>(in&gt;&gt;s) <span class="comment">//如果写入成功，会返回true</span></span><br><span class="line">  v1.push_back(s);</span><br><span class="line"><span class="comment">//string对象会自动忽略开头空白并从第一个真正字符开始读起，直到遇到下一处空白位置。比如输入是" Hello World "读入的就是Hello。</span></span><br></pre></td></tr></table></figure>
+
+<hr>
+<h4 id="看看ifstream的作用原理"><a href="#看看ifstream的作用原理" class="headerlink" title="看看ifstream的作用原理"></a>看看ifstream的作用原理</h4><p>Sales_record.md文件如下内容</p>
+<p>xxx 5 10<br>yyq 10 20</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">ifstream <span class="title">in</span><span class="params">(<span class="string">"/Users/jhyouergen/Desktop/Sales_record.md"</span>)</span></span>;</span><br><span class="line"><span class="comment">//把全部文件读取到in流中</span></span><br><span class="line"><span class="built_in">string</span> s,z;</span><br><span class="line"><span class="keyword">int</span> i,o;</span><br><span class="line">in &gt;&gt; s &gt;&gt; i &gt;&gt; o &gt;&gt; z; <span class="comment">//in流把内容赋予给变量必须保持in流中的数据类型和变量的数据类型一致</span></span><br><span class="line"><span class="comment">//此时“in”stream流中的前四个内容“xxx”，“5”，“10”，“yyq”就已经用掉了，此时“in”stream中就只剩下10， 20！</span></span><br><span class="line"><span class="built_in">cout</span>&lt;&lt; s &lt;&lt;i &lt;&lt; o &lt;&lt;z; <span class="comment">//输出s：xxx， i：5， o：10， z：yyq</span></span><br><span class="line"><span class="keyword">int</span> p;</span><br><span class="line">in &gt;&gt; p; <span class="comment">//此时p等于10！</span></span><br><span class="line"><span class="keyword">if</span>(in) <span class="comment">//当in流中还有内容时为true；当in流中无内容时为false。</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="文件格式"><a href="#文件格式" class="headerlink" title="文件格式"></a>文件格式</h3><p>每个流都有一个关联的文件模式，用来指出如何使用文件。</p>
+<table>
+<thead>
+<tr>
+<th>代码</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>in</td>
+<td>以读的方式打开</td>
+</tr>
+<tr>
+<td>out</td>
+<td>以写的方式打开</td>
+</tr>
+<tr>
+<td>app（append）</td>
+<td>每次写操作前均定位到文件末尾</td>
+</tr>
+<tr>
+<td>ate</td>
+<td>打开文件后立即定位到文件末尾</td>
+</tr>
+<tr>
+<td>trunc</td>
+<td>截断文件</td>
+</tr>
+<tr>
+<td>binary</td>
+<td>以二进制方式进行打开</td>
+</tr>
+</tbody></table>
+<ul>
+<li>调用open打开文件</li>
+<li>用一个文件名初始化流（ifstream in(ifile)）来隐式打开文件也可以</li>
+</ul>
+<p>指定文件模式有如下限制：</p>
+<ul>
+<li>只能对 <code>ofstream</code> 或 <code>fstream</code> 对象设定 <code>out</code> 模式。</li>
+<li>只能对 <code>ifstream</code> 或 <code>fstream</code> 对象设定 <code>in</code> 模式。</li>
+<li>只有当 <code>out</code> 被设定时才能设定 <code>trunc</code> 模式。</li>
+<li>只要 <code>trunc</code> 没被设定，就能设定 <code>app</code> 模式。在 <code>app</code> 模式下，即使没有设定 <code>out</code> 模式，文件也是以【输出】方式打开。</li>
+<li>默认情况下，即使没有设定 <code>trunc</code>，以 <code>out</code> 模式打开的文件也会被截断。如果想保留以 <code>out</code> 模式打开的文件内容，就必须同时设定 <code>app</code> 模式，这会将数据追加写到文件末尾；或者同时设定 <code>in</code> 模式，即同时进行读写操作。</li>
+<li><code>ate</code> 和 <code>binary</code> 模式可用于任何类型的文件流对象，并可以和其他任何模式组合使用。</li>
+<li>与 <code>ifstream</code> 对象关联的文件默认以 <code>in</code> 模式打开，与 <code>ofstream</code> 对象关联的文件默认以 <code>out</code> 模式打开，与 <code>fstream</code> 对象关联的文件默认以 <code>in</code> 和 <code>out</code> 模式打开。</li>
+</ul>
+<p>每个文件流类型都定义了一个默认的文件模式，当我们未指定文件模式时，就使用此默认模式。与 <code>ifstream</code> 关联的文件默认以 <code>in</code> 模式打开；与 <code>ofstream</code> 关联的文件默认以 <code>out</code> 模式打开；与 <code>fstream</code> 关联的文件默认以 <code>in</code> 和 <code>out</code> 模式打开。</p>
+<h4 id="以out模式打开文件会丢失已有数据"><a href="#以out模式打开文件会丢失已有数据" class="headerlink" title="以out模式打开文件会丢失已有数据"></a>以out模式打开文件会丢失已有数据</h4><p>默认情况下，打开 <code>ofstream</code> 对象时，文件内容会被丢弃，阻止一个 <code>ofstream</code> 清空给定文件内容的方法是同时指定 <code>app</code> 模式：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">ofstream <span class="title">out</span><span class="params">(<span class="string">"file1"</span>)</span></span>;<span class="comment">//隐含以输出模式打开文件并截断文件</span></span><br><span class="line"><span class="function">ofstream <span class="title">out2</span><span class="params">(<span class="string">"file1"</span>, ofstream::out)</span></span>;<span class="comment">// 隐含地截断文件</span></span><br><span class="line"><span class="function">ofstream <span class="title">out3</span><span class="params">(<span class="string">"file1"</span>, ofstream::out | ofstream::trunc)</span></span>;</span><br><span class="line"><span class="comment">//显式地截断文件</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//为了保留文件内容，我们必须显式指定app模式</span></span><br><span class="line"><span class="function">ofstream <span class="title">app</span><span class="params">(<span class="string">"file2"</span>, ofstream::app)</span></span>;<span class="comment">//隐含为输出模式</span></span><br><span class="line"><span class="function">ofstream <span class="title">app2</span><span class="params">(<span class="string">"file2"</span>, ofstream::out | ofstream::app)</span></span>;</span><br></pre></td></tr></table></figure>
+
+
+
+<p>【流对象】每次打开文件时都可以改变其文件模式。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">ofstream out;   			<span class="comment">// 未指定文件打开模式</span></span><br><span class="line">out.<span class="built_in">open</span>(<span class="string">"scratchpad"</span>);    	<span class="comment">// 模式隐含设置为输出和截断</span></span><br><span class="line">out.<span class="built_in">close</span>();    			<span class="comment">// 关闭out，以便我们将其用于其他文件</span></span><br><span class="line">out.<span class="built_in">open</span>(<span class="string">"precious"</span>, ofstream::app);   <span class="comment">// 模式为out和app</span></span><br><span class="line">out.<span class="built_in">close</span>();</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>保留 被 <code>ofstream</code> 打开的文件 中已有数据 的唯一方法是显式指定 <code>app</code> 或 <code>in</code> 模式。</p>
+</blockquote>
+<h2 id="string流"><a href="#string流" class="headerlink" title="string流"></a>string流</h2><p>头文件 <em>sstream</em> 定义了三个类型来支持内存IO：<code>istringstream</code> 从 <code>string</code> 读取数据，<code>ostringstream</code> 向 <code>string</code> 写入数据，<code>stringstream</code> 可以同时读写 <code>string</code> 的数据。</p>
+<table>
+<thead>
+<tr>
+<th>代码</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>sstream strm;</td>
+<td>strm是一个未绑定的stringstream对象。sstream是头文件sstream中定义的一个【类型】</td>
+</tr>
+<tr>
+<td>sstream strm(s)</td>
+<td>strm是一个sstream对象，保存string s的一个拷贝。此构造函数是explicit的</td>
+</tr>
+<tr>
+<td>strm.str()</td>
+<td>返回strm所保存的string的拷贝</td>
+</tr>
+<tr>
+<td>strm.str(s)</td>
+<td>将string s拷贝到strm中。返回void</td>
+</tr>
+<tr>
+<td>strm.clear()</td>
+<td>将strm清空</td>
+</tr>
+</tbody></table>
+<h3 id="使用istringstream-主要作用就是把一行string分成单个单词进行输出-保存"><a href="#使用istringstream-主要作用就是把一行string分成单个单词进行输出-保存" class="headerlink" title="使用istringstream(主要作用就是把一行string分成单个单词进行输出/保存)"></a>使用istringstream(主要作用就是把一行string分成单个单词进行输出/保存)</h3><p>当某些工作是对整行文本进行处理， 而其他一些工作是处理【行内的单个单词】时，通常可以使用 <code>istringstream</code>。</p>
+<p>一个文件列出了一些人和他们的电话号码。</p>
+<p>morgan 2015552368 8625550123<br>drew 9735550130<br>lee 6095550132 2015550175 8005550000</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 成员默认为公有</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">PersonInfo</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    <span class="built_in">string</span> name;</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="built_in">string</span>&gt; phones;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="built_in">string</span> <span class="built_in">line</span>, <span class="keyword">word</span>;   <span class="comment">// 分别保存来自输入的一行和单词</span></span><br><span class="line"><span class="built_in">vector</span>&lt;PersonInfo&gt; people;    <span class="comment">// 保存来自输入的所有记录</span></span><br><span class="line"><span class="comment">// 逐行从输入读取数据，直至cin遇到文件尾（或其他错误）</span></span><br><span class="line"><span class="keyword">while</span> (getline(<span class="built_in">cin</span>, <span class="built_in">line</span>)) <span class="comment">//</span></span><br><span class="line">&#123;</span><br><span class="line">    PersonInfo info;    			<span class="comment">// 创建一个保存此记录数据的对象</span></span><br><span class="line">    <span class="function"><span class="built_in">istringstream</span> <span class="title">record</span><span class="params">(<span class="built_in">line</span>)</span></span>;    	<span class="comment">// 将记录绑定到刚读入的行</span></span><br><span class="line">    record &gt;&gt; info.name;    		<span class="comment">// 自动读取空格前的字符并传入info.name变量</span></span><br><span class="line">    <span class="keyword">while</span> (record &gt;&gt; <span class="keyword">word</span>)  		<span class="comment">// 读取电话号码，当读完line时，内层while循环就结束了。</span></span><br><span class="line">        info.phones.push_back(<span class="keyword">word</span>);   <span class="comment">// 保持它们</span></span><br><span class="line">    people.push_back(info);    		<span class="comment">// 将此记录追加到people末尾</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>编写程序，将来自一个文件中的行保存在一个vector<string>中。然后使用一个istringstream从vector读取元素，每次读取一个单词。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="function">ifstream <span class="title">in</span><span class="params">(<span class="string">"/Users/jhyouergen/Desktop/Sales_record.md"</span>)</span></span>;</span><br><span class="line">    <span class="built_in">string</span> <span class="built_in">line</span>;</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="built_in">string</span>&gt; v1;</span><br><span class="line">    <span class="keyword">while</span> (getline(in, <span class="built_in">line</span>)) &#123; </span><br><span class="line">      <span class="comment">//把Sales__record文件中的内容逐行读入</span></span><br><span class="line">        v1.push_back(<span class="built_in">line</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">auto</span> i:v1)&#123;</span><br><span class="line">        <span class="function"><span class="built_in">istringstream</span> <span class="title">record</span><span class="params">(i)</span></span>;</span><br><span class="line">        <span class="built_in">string</span> s;</span><br><span class="line">        <span class="keyword">while</span>(record &gt;&gt; s)&#123;</span><br><span class="line">          <span class="comment">//把每行中的单词逐个输出</span></span><br><span class="line">            <span class="built_in">cout</span>&lt;&lt;s&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="使用ostringstream"><a href="#使用ostringstream" class="headerlink" title="使用ostringstream"></a>使用ostringstream</h3><p>当逐步构造输出， 希望最后一起打印时， <code>ostringstream</code> 是很有用的。</p>
+<ul>
+<li>如果号码都是有效的，我们希望输出一个新的文件，包含改变格式后的号码。</li>
+<li>对于那些无效的号码，我们不会将它们输出到新文件中，而是打印一条包含人名和无效号码的错误信息。</li>
+</ul>
+<p>由于我们不希望输出有无效号码的人，因此对每个人，直到验证完成所有电话号码后才可以进行输出操作。但是，我们可以先将输出内容“写入”到一个内存ostringstream中：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> &amp;entry : people)</span><br><span class="line">&#123; </span><br><span class="line">	<span class="comment">// 对people中每一项，每一项都是PersonInfo类型</span></span><br><span class="line">    <span class="built_in">ostringstream</span> formatted, badNums;   	</span><br><span class="line">  <span class="comment">// 每个循环步创建的对象</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> &amp;nums : entry.phones)</span><br><span class="line">    &#123; </span><br><span class="line">    	<span class="comment">// 对每个数</span></span><br><span class="line">        <span class="keyword">if</span> (!valid(nums)) <span class="comment">// valid函数负责完成号码的验证</span></span><br><span class="line">        &#123;</span><br><span class="line">            badNums &lt;&lt; <span class="string">" "</span> &lt;&lt; nums;  		</span><br><span class="line">          <span class="comment">// 将数的字符串形式存入badNums</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            <span class="comment">// 将格式化的字符串"写入"</span></span><br><span class="line">            formatted &lt;&lt; <span class="string">" "</span> &lt;&lt; format(nums);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (badNums.str().empty())   			<span class="comment">// 没有错误的数</span></span><br><span class="line">        os &lt;&lt; entry.name &lt;&lt; <span class="string">" "</span>  			<span class="comment">// 打印名字</span></span><br><span class="line">            &lt;&lt; formatted.str() &lt;&lt; <span class="built_in">endl</span>;   	<span class="comment">// 和格式化的数</span></span><br><span class="line">    <span class="keyword">else</span>  <span class="comment">// 否则，打印名字和错误的数</span></span><br><span class="line">        <span class="built_in">cerr</span> &lt;&lt; <span class="string">"input error: "</span> &lt;&lt; entry.name</span><br><span class="line">            &lt;&lt; <span class="string">" invalid number(s) "</span> &lt;&lt; badNums.str() &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+        
+        <br />
+        <div id="comment-container">
+        </div>
+        <div id="disqus_thread"></div>
+
+        <div id="lv-container">
+        </div>
+
+    </div>
+</div>
+
+    </div>
+</div>
+
+
+<footer class="footer">
+    <ul class="list-inline text-center">
+        
+        
+
+        
+
+        
+
+        
+
+        
+
+    </ul>
+    
+    <p>
+        <span id="busuanzi_container_site_pv">
+            <span id="busuanzi_value_site_pv"></span>PV
+        </span>
+        <span id="busuanzi_container_site_uv">
+            <span id="busuanzi_value_site_uv"></span>UV
+        </span>
+        Created By <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>  Theme <a href="https://github.com/aircloud/hexo-theme-aircloud" target="_blank" rel="noopener">AirCloud</a></p>
+</footer>
+
+
+
+
+</body>
+
+<script>
+    // We expose some of the variables needed by the front end
+    window.hexo_search_path = "search.json"
+    window.hexo_root = "/"
+    window.isPost = true
+</script>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+
+<script src="/js/index.js"></script>
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+    <script>
+        /**
+         *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+         *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+        */
+        if( '' || '')
+        var disqus_config = function () {
+            this.page.url = '';  // Replace PAGE_URL with your page's canonical URL variable
+            this.page.identifier = ''; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+        };
+
+        (function() { // DON'T EDIT BELOW THIS LINE
+            var d = document, s = d.createElement('script');
+            s.src = 'https://pikache.disqus.com/embed.js';
+            s.setAttribute('data-timestamp', +new Date());
+            (d.head || d.body).appendChild(s);
+        })();
+    </script>
+
+
+
+</html>
