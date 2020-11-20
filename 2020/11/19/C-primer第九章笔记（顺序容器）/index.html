@@ -881,15 +881,25 @@
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">s2.replace(<span class="number">11</span>, <span class="number">3</span>, <span class="string">"5th"</span>);   <span class="comment">// 将s2从第11个下标开始后面3位替换为"5 th"</span></span><br></pre></td></tr></table></figure>
 
 <ul>
-<li>insert函数：<br>1.用下标</li>
+<li>insert函数：</li>
 </ul>
+<ol>
+<li><p>用下标</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">s.insert(s.<span class="built_in">size</span>(), <span class="number">5</span>, <span class="string">'!'</span>); <span class="comment">//在s末尾插入5个感叹号</span></span><br><span class="line">s.insert(s.<span class="built_in">size</span>(), <span class="string">" 4th Ed."</span>);     <span class="comment">// 在末尾插入“ 4th Ed”</span></span><br></pre></td></tr></table></figure>
-
-<ol start="2">
-<li>用迭代器</li>
+</li>
+<li><p>用迭代器</p>
+</li>
 </ol>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">c.insert(p, n, t); <span class="comment">//在迭代器p指向的元素之前插入n个值为t的元素。返回指向新添加的第一个元素的迭代器，若n为0，则返回p</span></span><br><span class="line">c.insert(p,b,e); <span class="comment">//将迭代器b和e指向的范围内的元素插入到迭代器p指向的元素之前。b和e不能指向c中的元素。返回指向新添加的第一个元素的迭代器，若范围为空，则返回p</span></span><br><span class="line">c.insert(p, il); <span class="comment">//il是一个花括号包围的元素值列表&#123;1，2，3，4&#125;。将这些给定值插入到迭代器p指向的元素之前。返回指向新添加的第一个元素的迭代器，若列表为空，则返回p</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>erase函数</li>
+</ul>
+<ol>
+<li><code>s.erase(11, 3);</code>         // 从s的第11位起，删除后面的3位</li>
+<li>迭代器<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">c.erase(p)  删除迭代器p所指定的元素，返回一个指向被删元素之后元素的迭代器，若p指向尾元素，则返回尾后迭代器  </span><br><span class="line">c.erase(b,e)  删除迭代器b和e所指定范围内的元素。返回一个指向最后一个被删元素之后元素的迭代器</span><br></pre></td></tr></table></figure>
 
+</li>
+</ol>
 <h3 id="string搜索操作"><a href="#string搜索操作" class="headerlink" title="string搜索操作"></a>string搜索操作</h3><p><code>string</code> 的每个搜索操作都返回一个 <code>string::size_type</code> 值，表示匹配位置的下标。如果搜索失败，则返回一个名为 <code>string::npos</code> 的 <code>static</code> 成员。标准库将 <code>npos</code> 定义为 <code>const string::size_type</code> 类型，并初始化为-1。</p>
 <blockquote>
 <p>不建议用 <code>int</code> 或其他带符号类型来保存 <code>string</code> 搜索函数的返回值。</p>
