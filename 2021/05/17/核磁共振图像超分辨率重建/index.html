@@ -93,7 +93,7 @@
     </div>
     
         <div id="toc" class="toc-article">
-    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#背景"><span class="toc-text">背景</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#磁共振相关基础知识"><span class="toc-text">磁共振相关基础知识</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#MRI基本原理"><span class="toc-text">MRI基本原理</span></a></li></ol></li></ol></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#背景"><span class="toc-text">背景</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#磁共振相关基础知识"><span class="toc-text">磁共振相关基础知识</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#MRI基本原理"><span class="toc-text">MRI基本原理</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#纵向弛豫"><span class="toc-text">纵向弛豫</span></a></li></ol></li></ol></li></ol>
 </div>
     
 </div>
@@ -163,7 +163,29 @@
 <li>氢质子含量高的组织纵向磁化矢量大，90度脉冲后磁化矢量偏转，产生的旋转的宏观横向矢量越大，MR信号强度越高。</li>
 <li>此时的MR图像可区分质子密度不同的两种组织。</li>
 <li>但是检测到的仅仅是不同组织氢质子含量的差别，对于临床诊断来说是远远不够的。</li>
-<li>我们总是在**90度脉冲关闭后一定时间才进行MR信号采集。</li>
+<li>我们总是在<strong>90度脉冲关闭后一定时间才进行MR信号采集。</strong></li>
+</ul>
+<p>无限电波激发使磁场偏转90度，关闭无线颠簸后，磁场又慢慢回到了平衡状态（纵向），如下图所示，在b点关闭无线电波：</p>
+<p><img src="close_RF_pulse.png" alt="close_RF_pulse"></p>
+<p>射频脉冲停止后，在主磁场的作用下，横向宏观磁化矢量逐渐缩小到0，纵向宏观磁化矢量从0逐渐回到平衡状态，这个过程称为<strong>核磁弛豫</strong>。</p>
+<p>核磁弛豫又可以分解为两个部分：</p>
+<ul>
+<li><p>横向弛豫</p>
+</li>
+<li><p>纵向弛豫</p>
+</li>
+</ul>
+<h4 id="纵向弛豫"><a href="#纵向弛豫" class="headerlink" title="纵向弛豫"></a>纵向弛豫</h4><p>也称为T1弛豫，是指90度脉冲关闭后，在主磁场的作用下，纵向磁化矢量开始恢复，直到恢复到平衡状态的过程。</p>
+<p>90度激发 —-&gt; 低能的质子获能进入高能状态</p>
+<p>纵向弛豫 &lt;—- 高能的质子释放能量</p>
+<p>高能的质子把能量释放给周围的晶格（分子）。</p>
+<ul>
+<li><p>晶格震动频率高于质子进动频率，能量传递慢 – 纯水</p>
+</li>
+<li><p>晶格振动频率接近于质子进动频率，能量传递快 – 脂肪</p>
+</li>
+<li><p>晶格振动频率低于质子进动频率，能量传递慢 – 含高浓度大分子蛋白质</p>
+</li>
 </ul>
 
         
