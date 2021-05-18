@@ -93,7 +93,7 @@
     </div>
     
         <div id="toc" class="toc-article">
-    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#背景"><span class="toc-text">背景</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#磁共振相关基础知识"><span class="toc-text">磁共振相关基础知识</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#MRI基本原理"><span class="toc-text">MRI基本原理</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#纵向弛豫"><span class="toc-text">纵向弛豫</span></a></li></ol></li></ol></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#背景"><span class="toc-text">背景</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#磁共振相关基础知识"><span class="toc-text">磁共振相关基础知识</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#MRI基本原理"><span class="toc-text">MRI基本原理</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#纵向弛豫"><span class="toc-text">纵向弛豫</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#横向弛豫"><span class="toc-text">横向弛豫</span></a></li></ol></li></ol></li></ol>
 </div>
     
 </div>
@@ -170,10 +170,8 @@
 <p>射频脉冲停止后，在主磁场的作用下，横向宏观磁化矢量逐渐缩小到0，纵向宏观磁化矢量从0逐渐回到平衡状态，这个过程称为<strong>核磁弛豫</strong>。</p>
 <p>核磁弛豫又可以分解为两个部分：</p>
 <ul>
-<li><p>横向弛豫</p>
-</li>
-<li><p>纵向弛豫</p>
-</li>
+<li>纵向弛豫(T1弛豫, 纵向磁化矢量恢复到原来63%所需要的时间)</li>
+<li>横向弛豫(T2弛豫，横向磁化矢量丧失至37%所需时间)</li>
 </ul>
 <h4 id="纵向弛豫"><a href="#纵向弛豫" class="headerlink" title="纵向弛豫"></a>纵向弛豫</h4><p>也称为T1弛豫，是指90度脉冲关闭后，在主磁场的作用下，纵向磁化矢量开始恢复，直到恢复到平衡状态的过程。</p>
 <p>90度激发 —-&gt; 低能的质子获能进入高能状态</p>
@@ -187,6 +185,20 @@
 <li><p>晶格振动频率低于质子进动频率，能量传递慢 – 含高浓度大分子蛋白质</p>
 </li>
 </ul>
+<p>如下图所示，横轴是时间，纵轴是Z轴矢量（纵向磁化矢量）的大小，描述的是纵向磁化矢量恢复到原来63%所需要的时间：</p>
+<p><img src="T1.png" alt="T1"></p>
+<p>如下图所示是不同组织T1弛豫大小（不同组织的纵向磁化矢量恢复到原来63%所需要的时间）</p>
+<p><img src="T1_organ.png" alt="T1_organ"></p>
+<h4 id="横向弛豫"><a href="#横向弛豫" class="headerlink" title="横向弛豫"></a>横向弛豫</h4><p>90度激发脉冲关闭后，所产生的横向磁化矢量很快衰减 – 自由感应衰减（FID），如下图所示：最上面的图表示的是射频脉冲信号随时间的变化，中间箭头表示的是横向磁化矢量（XY平面矢量）大小的变化。下面的图表示检测到的横向磁化矢量信号随时间变化的强弱。</p>
+<p><img src="T2.png" alt="T2"></p>
+<p>横向磁化矢量的衰减是由于：</p>
+<ol>
+<li>自旋质子暴露在不均匀的主磁场中</li>
+<li>自旋质子暴露在临近自旋质子、其他自旋原子核、电子的微磁场环境中；由于分子的运动，质子周围的微磁场不断波动</li>
+<li>每个质子感受的磁场不均匀</li>
+</ol>
+<p>如下图所示，黄色箭头1、2、3分别表示3个氢质子进动产生的横向磁化矢量（正交分解后在XY平面上的磁化矢量），白色箭头是它们的矢量和。在T2时刻时，因为没有90度激发脉冲的作用，三个氢质子的相位开始分散（横向磁化矢量方向（黄色箭头1、2、3的方向）不一致），所以矢量和（白色箭头的长度）变小，变成左侧刚施加90度激发脉冲的时刻的横向磁化矢量的37%的大小。而到时间为5*T2时，横向磁化矢量即矢量和（白色箭头的大小）为0。<br><img src="T2_2.png" alt="T2_2"></p>
+<p>用T2值来描述组织的T2弛豫快慢，如下图所示，不同组织的T2弛豫不同。<br><img src="T2_organ.png" alt="T2_organ"></p>
 
         
         <br />
